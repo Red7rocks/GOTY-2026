@@ -41,8 +41,8 @@ public partial class Level : Node2D
 			int index = i * followSpacing;		//Setting index of current player to where leading player was 'followingSpacing' positions ago
 			if (index < positions.Count)		//Make sure position exists. > Count would be outside of the array
 			{
-				Vector2 target = positions[index];										//Lerp = Linear interpolation. smoothly transitions position from 
-				party[i].GlobalPosition = party[i].GlobalPosition.Lerp(target, 0.25f);	//current position to target position at a rate of 0.25 per tick
+				Vector2 target = positions[index]; 
+				party[i].GlobalPosition = target; 		//Move character[i] to next position in the index
 			}
 		}
 	}
