@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dgjfjlcg4y75b"]
+
+[ext_resource type="Texture2D" uid="uid://calyk86qpaye8" path="res://Sprites/bullfrog.png" id="1_0ys04"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r30pj"]
+atlas = ExtResource("1_0ys04")
+region = Rect2(0, 0, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f80w"]
+atlas = ExtResource("1_0ys04")
+region = Rect2(16, 0, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42q8f"]
+atlas = ExtResource("1_0ys04")
+region = Rect2(32, 0, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nc7w"]
+atlas = ExtResource("1_0ys04")
+region = Rect2(48, 0, 16, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjxkb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r30pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f80w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42q8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nc7w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ys04"]
+size = Vector2(16, 11)
+
+[node name="Tank" type="CharacterBody2D" unique_id=1670933510]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=323727275]
+position = Vector2(8, 5.5)
+sprite_frames = SubResource("SpriteFrames_vjxkb")
+frame_progress = 0.34440413
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=759430888]
+position = Vector2(8, 5.5)
+shape = SubResource("RectangleShape2D_0ys04")

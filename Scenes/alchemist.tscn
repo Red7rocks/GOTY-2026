@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c6lcm2e84tkt7"]
+
+[ext_resource type="Texture2D" uid="uid://gmo0njiwsy1v" path="res://Sprites/Alchemistfrog.png" id="1_hjisi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35ry1"]
+atlas = ExtResource("1_hjisi")
+region = Rect2(0, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26stj"]
+atlas = ExtResource("1_hjisi")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22k71"]
+atlas = ExtResource("1_hjisi")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvvv0"]
+atlas = ExtResource("1_hjisi")
+region = Rect2(51, 0, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0deth"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35ry1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26stj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22k71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvvv0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5d4b"]
+size = Vector2(12, 13)
+
+[node name="Alchemist" type="CharacterBody2D" unique_id=567741228]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1866542353]
+position = Vector2(8.5, 8.5)
+sprite_frames = SubResource("SpriteFrames_0deth")
+frame_progress = 0.8834865
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=597054025]
+position = Vector2(7, 10.5)
+shape = SubResource("RectangleShape2D_k5d4b")

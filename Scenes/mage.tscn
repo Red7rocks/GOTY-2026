@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cgigqyucxmc4n"]
+
+[ext_resource type="Texture2D" uid="uid://du32c12dfngx8" path="res://Sprites/magefrog.png" id="1_y4der"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4der"]
+size = Vector2(12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xdm5"]
+atlas = ExtResource("1_y4der")
+region = Rect2(0, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbshb"]
+atlas = ExtResource("1_y4der")
+region = Rect2(18, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h01ui"]
+atlas = ExtResource("1_y4der")
+region = Rect2(36, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_254od"]
+atlas = ExtResource("1_y4der")
+region = Rect2(54, 0, 18, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qippj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xdm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbshb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h01ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_254od")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Mage" type="CharacterBody2D" unique_id=1109911825]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1048981084]
+position = Vector2(7, 8)
+shape = SubResource("RectangleShape2D_y4der")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1763911245]
+position = Vector2(9, 8)
+sprite_frames = SubResource("SpriteFrames_qippj")
+frame_progress = 0.9244343

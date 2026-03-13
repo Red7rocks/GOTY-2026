@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ipama0bygqce"]
+
+[ext_resource type="Texture2D" uid="uid://5k204h8wvvhd" path="res://Sprites/cowboyfrog.png" id="1_4rmwn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u404f"]
+atlas = ExtResource("1_4rmwn")
+region = Rect2(0, 0, 12, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65m2c"]
+atlas = ExtResource("1_4rmwn")
+region = Rect2(12, 0, 12, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w0tq"]
+atlas = ExtResource("1_4rmwn")
+region = Rect2(24, 0, 12, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj18n"]
+atlas = ExtResource("1_4rmwn")
+region = Rect2(36, 0, 12, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3rtdv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u404f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65m2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w0tq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj18n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_th4sq"]
+size = Vector2(12, 15)
+
+[node name="Cowboy" type="CharacterBody2D" unique_id=2135101203]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1785995147]
+position = Vector2(6, 7.5)
+sprite_frames = SubResource("SpriteFrames_3rtdv")
+frame_progress = 0.63620627
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=570317195]
+position = Vector2(6, 7.5)
+shape = SubResource("RectangleShape2D_th4sq")
