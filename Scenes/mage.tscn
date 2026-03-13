@@ -42,12 +42,11 @@ animations = [{
 }]
 
 [node name="Mage" type="CharacterBody2D" unique_id=1109911825]
+scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1048981084]
-position = Vector2(7, 8)
 shape = SubResource("RectangleShape2D_y4der")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1763911245]
-position = Vector2(9, 8)
 sprite_frames = SubResource("SpriteFrames_qippj")
 frame_progress = 0.9244343

@@ -39,15 +39,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5d4b"]
-size = Vector2(12, 13)
+size = Vector2(54.5, 55.875)
 
 [node name="Alchemist" type="CharacterBody2D" unique_id=567741228]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1866542353]
-position = Vector2(8.5, 8.5)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_0deth")
 frame_progress = 0.8834865
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=597054025]
-position = Vector2(7, 10.5)
 shape = SubResource("RectangleShape2D_k5d4b")

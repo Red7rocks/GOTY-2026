@@ -44,10 +44,9 @@ size = Vector2(12, 15)
 [node name="Cowboy" type="CharacterBody2D" unique_id=2135101203]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1785995147]
-position = Vector2(6, 7.5)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_3rtdv")
-frame_progress = 0.63620627
+frame_progress = 0.48981485
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=570317195]
-position = Vector2(6, 7.5)
 shape = SubResource("RectangleShape2D_th4sq")

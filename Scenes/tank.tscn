@@ -44,10 +44,9 @@ size = Vector2(16, 11)
 [node name="Tank" type="CharacterBody2D" unique_id=1670933510]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=323727275]
-position = Vector2(8, 5.5)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_vjxkb")
 frame_progress = 0.34440413
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=759430888]
-position = Vector2(8, 5.5)
 shape = SubResource("RectangleShape2D_0ys04")
