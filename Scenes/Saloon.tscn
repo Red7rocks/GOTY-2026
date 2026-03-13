@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cb6i2csoswscr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g7oq"]
+
+[node name="Node2D" type="Area2D" unique_id=1619431890]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1624067558]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=389724751]
+shape = SubResource("RectangleShape2D_8g7oq")
