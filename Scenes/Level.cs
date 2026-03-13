@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Collections.Generic;
 
 public partial class Level : Node2D
 {
@@ -9,60 +8,22 @@ public partial class Level : Node2D
 	PackedScene mageScene = ResourceLoader.Load<PackedScene>("res://Scenes/mage.tscn");
 	PackedScene tankScene = ResourceLoader.Load<PackedScene>("res://Scenes/tank.tscn");
 
-	List<CharacterBody2D> party = new List<CharacterBody2D>();
-	List<Vector2> positions = new List<Vector2>();
-	Vector2 lastRecordedPosition;
-	int followSpacing = 15;
-	int playerSpeed = 400;
+	Node2D levelParty;		//Container that will spawn all characters in level
+	Party party;			//Container that holds all player/movement logic
 
-	void MoveLeader()
-	{
-		Vector2 direction = Input.GetVector("a", "d", "w", "s");	//Grab input from WASD keys 
-		party[0].Velocity = direction * playerSpeed;
-		party[0].MoveAndSlide();
-	}
-	void recordPosition()
-	{
-		if (positions.Count == 0 || party[0].GlobalPosition.DistanceTo(lastRecordedPosition) > 0)
-		{
-			positions.Insert(0, party[0].GlobalPosition);		//Record current position if no positions have been recorded yet,
-			lastRecordedPosition = party[0].GlobalPosition;		//or if distance from last recorded position is non-zero
-		}
-		int maxHistory = followSpacing * party.Count;		//We give ourselves as many position points in our vector as there are spaces between players
-		if (positions.Count > maxHistory)
-		{
-			positions.RemoveAt(positions.Count - 1);			//Memory management so vector doesn't grow infinitely
-		}
-	}
-	void MoveFollowers()
-	{
-		for (int i = 1; i < party.Count; i++)
-		{
-			int index = i * followSpacing;		//Setting index of current player to where leading player was 'followingSpacing' positions ago
-			if (index < positions.Count)		//Make sure position exists. > Count would be outside of the array
-			{
-				Vector2 target = positions[index]; 
-				party[i].GlobalPosition = target; 		//Move character[i] to next position in the index
-			}
-		}
-	}
-	void CreateCharacter(PackedScene scene)
-	{
-		CharacterBody2D newScene = scene.Instantiate<CharacterBody2D>();
-		GetNode<Node2D>("Party").AddChild(newScene);
-		party.Add(newScene);
-	}
 	public override void _Ready()
 	{
-		CreateCharacter(cowboyScene);
-		CreateCharacter(alchemistScene);
-		CreateCharacter(mageScene);
-		CreateCharacter(tankScene);
+		party = new Party();
+		levelParty = GetNode<Node2D>("Party");
+		levelParty.AddChild(party.CreateCharacter(cowboyScene));			//Add a cowboy to the party and the level party in one call
+		levelParty.AddChild(party.CreateCharacter(alchemistScene));			//Add an alchemist to the party and the level party in one call
+		levelParty.AddChild(party.CreateCharacter(mageScene));				//Add a mage to the party and the level party in one call
+		levelParty.AddChild(party.CreateCharacter(tankScene))				;//Add a tank to the party and the level party in one call
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		MoveLeader();
-		recordPosition();
-		MoveFollowers();
+		party.MoveLeader();
+		party.recordPosition();
+		party.MoveFollowers();
 	}
 }
