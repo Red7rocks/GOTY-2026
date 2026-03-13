@@ -47,6 +47,7 @@ collision_mask = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1866542353]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_0deth")
+autoplay = "default"
 frame_progress = 0.8834865
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=597054025]

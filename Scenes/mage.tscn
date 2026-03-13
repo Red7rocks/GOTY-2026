@@ -2,9 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://du32c12dfngx8" path="res://Sprites/magefrog.png" id="1_y4der"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4der"]
-size = Vector2(12, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xdm5"]
 atlas = ExtResource("1_y4der")
 region = Rect2(0, 0, 18, 16)
@@ -41,13 +38,18 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4der"]
+size = Vector2(12, 16)
+
 [node name="Mage" type="CharacterBody2D" unique_id=1109911825]
 scale = Vector2(5, 5)
 collision_mask = 2
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1763911245]
+scale = Vector2(0.99999994, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_qippj")
+autoplay = "default"
+frame_progress = 0.9244343
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1048981084]
 shape = SubResource("RectangleShape2D_y4der")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1763911245]
-sprite_frames = SubResource("SpriteFrames_qippj")
-frame_progress = 0.9244343
