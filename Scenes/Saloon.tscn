@@ -46,20 +46,22 @@ size = Vector2(174, 112)
 radius = 109.0
 height = 290.0
 
-[node name="Node2D" type="StaticBody2D" unique_id=682668532]
+[node name="Saloon" type="StaticBody2D" unique_id=682668532]
 collision_layer = 2
 script = ExtResource("1_rs0cq")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1644664519]
+[node name="BuildingAnimationSprite" type="AnimatedSprite2D" parent="." unique_id=1644664519]
 scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_hivi7")
-frame_progress = 0.091035426
+frame_progress = 0.32827482
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=389724751]
+[node name="BuildingCollision" type="CollisionShape2D" parent="." unique_id=389724751]
 shape = SubResource("RectangleShape2D_8g7oq")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1593458144]
+[node name="SurroundingArea" type="Area2D" parent="." unique_id=1593458144]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1111230711]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SurroundingArea" unique_id=1111230711]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_rs0cq")
+
+[connection signal="body_entered" from="SurroundingArea" to="." method="OnSurroundingAreaEntered"]

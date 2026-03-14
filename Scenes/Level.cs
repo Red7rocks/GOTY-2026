@@ -10,10 +10,14 @@ public partial class Level : Node2D
 	PackedScene saloonScene = ResourceLoader.Load<PackedScene>("res://Scenes/saloon.tscn");
 
 	Node2D levelParty;		//Container that will spawn all characters in level
-	Node2D levelBuildings;
-	Saloon saloon;
+	Node2D levelBuildings;	//Container that will spawn all buildings in the level
+	Saloon saloon;			//Saloon object accessible across functions;
 	Party party;			//Container that holds all player/movement logic
 
+	public void nearbySaloon(){
+		//Prompt player if they want to enter
+		//if they do, change scene
+	}
 	public override void _Ready()
 	{
 		party = new Party();
@@ -27,7 +31,7 @@ public partial class Level : Node2D
 		levelParty.AddChild(party.CreateCharacter(tankScene))				;//Add a tank to the party and the level party in one call
 		
 		levelBuildings.AddChild(saloon);
-		saloon.doorAnimation();
+		saloon.nearby += nearbySaloon;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
