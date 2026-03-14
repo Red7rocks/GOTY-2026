@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://cb6i2csoswscr"]
 
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/LevelObject.cs" id="1_rs0cq"]
-[ext_resource type="Texture2D" uid="uid://b7uncpxg54gim" path="res://Sprites/saloon.png" id="2_wa1r4"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/LevelObject.cs" id="1_hgdn4"]
+[ext_resource type="Texture2D" uid="uid://b7uncpxg54gim" path="res://Sprites/saloon.png" id="2_hu4dj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w01x6"]
-atlas = ExtResource("2_wa1r4")
+atlas = ExtResource("2_hu4dj")
 region = Rect2(0, 0, 25, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uiyr6"]
-atlas = ExtResource("2_wa1r4")
+atlas = ExtResource("2_hu4dj")
 region = Rect2(25, 0, 25, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g47cs"]
-atlas = ExtResource("2_wa1r4")
+atlas = ExtResource("2_hu4dj")
 region = Rect2(50, 0, 25, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3q78r"]
-atlas = ExtResource("2_wa1r4")
+atlas = ExtResource("2_hu4dj")
 region = Rect2(75, 0, 25, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hivi7"]
@@ -34,7 +34,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3q78r")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
@@ -48,7 +48,7 @@ height = 290.0
 
 [node name="Saloon" type="StaticBody2D" unique_id=682668532]
 collision_layer = 2
-script = ExtResource("1_rs0cq")
+script = ExtResource("1_hgdn4")
 
 [node name="AnimationSprite2D" type="AnimatedSprite2D" parent="." unique_id=1644664519]
 scale = Vector2(7, 7)
