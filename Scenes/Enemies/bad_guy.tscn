@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c13trf4xsnphs"]
 
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/BadGuy.cs" id="1_xratm"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/LevelObject.cs" id="1_xratm"]
 [ext_resource type="Texture2D" uid="uid://cqcgg5pgup6g" path="res://Sprites/badguy.png" id="2_r7euu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m86t4"]
@@ -42,16 +42,29 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upfif"]
 size = Vector2(22, 28)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xratm"]
+radius = 21.8
+height = 49.999996
+
 [node name="BadGuy" type="StaticBody2D" unique_id=504548312]
 scale = Vector2(5, 5)
 collision_layer = 4
 script = ExtResource("1_xratm")
 
-[node name="BadGuyAnimationSprite" type="AnimatedSprite2D" parent="." unique_id=469969295]
+[node name="AnimationSprite2D" type="AnimatedSprite2D" parent="." unique_id=469969295]
+position = Vector2(1.5, 0)
 sprite_frames = SubResource("SpriteFrames_me11b")
-autoplay = "default"
-frame_progress = 0.032493863
+frame = 3
+frame_progress = 1.0
 
 [node name="BadGuyCollision" type="CollisionShape2D" parent="." unique_id=786831009]
-position = Vector2(-2, 0)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_upfif")
+
+[node name="SurroundingArea" type="Area2D" parent="." unique_id=1165007438]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SurroundingArea" unique_id=993490361]
+shape = SubResource("CapsuleShape2D_xratm")
+
+[connection signal="body_entered" from="SurroundingArea" to="." method="OnSurroundingAreaEntered"]
+[connection signal="body_exited" from="SurroundingArea" to="." method="OnSurroundingBodyExited"]

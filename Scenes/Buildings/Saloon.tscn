@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb6i2csoswscr"]
 
-[ext_resource type="Script" uid="uid://cwq1xsroe05go" path="res://Scenes/Saloon.cs" id="1_rs0cq"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/LevelObject.cs" id="1_rs0cq"]
 [ext_resource type="Texture2D" uid="uid://b7uncpxg54gim" path="res://Sprites/saloon.png" id="2_wa1r4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w01x6"]
@@ -50,7 +50,7 @@ height = 290.0
 collision_layer = 2
 script = ExtResource("1_rs0cq")
 
-[node name="BuildingAnimationSprite" type="AnimatedSprite2D" parent="." unique_id=1644664519]
+[node name="AnimationSprite2D" type="AnimatedSprite2D" parent="." unique_id=1644664519]
 scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_hivi7")
 frame_progress = 0.32827482
@@ -65,3 +65,4 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_rs0cq")
 
 [connection signal="body_entered" from="SurroundingArea" to="." method="OnSurroundingAreaEntered"]
+[connection signal="body_exited" from="SurroundingArea" to="." method="OnSurroundingBodyExited"]

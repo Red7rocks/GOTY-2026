@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://ipama0bygqce"]
 
-[ext_resource type="Texture2D" uid="uid://5k204h8wvvhd" path="res://Sprites/cowboyfrog.png" id="1_4rmwn"]
+[ext_resource type="Texture2D" uid="uid://5k204h8wvvhd" path="res://Sprites/cowboyfrog.png" id="1_6ypen"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u404f"]
-atlas = ExtResource("1_4rmwn")
+atlas = ExtResource("1_6ypen")
 region = Rect2(0, 0, 12, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65m2c"]
-atlas = ExtResource("1_4rmwn")
+atlas = ExtResource("1_6ypen")
 region = Rect2(12, 0, 12, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6w0tq"]
-atlas = ExtResource("1_4rmwn")
+atlas = ExtResource("1_6ypen")
 region = Rect2(24, 0, 12, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sj18n"]
-atlas = ExtResource("1_4rmwn")
+atlas = ExtResource("1_6ypen")
 region = Rect2(36, 0, 12, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3rtdv"]
