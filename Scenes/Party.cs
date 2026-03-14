@@ -10,7 +10,12 @@ public class Party
 
 	int followSpacing = 15;		//How far apart players should follow. can be adjusted
 	int playerSpeed = 7;		//How fast players can move. can be adjusted
-	
+
+	public CharacterBody2D CreateCharacter(PackedScene scene){
+		CharacterBody2D newScene = scene.Instantiate<CharacterBody2D>();	//Create new CharacterBody from PackedScene that was passed
+		party.Add(newScene);												//Add created character to the party
+		return newScene;													//Return created character to the level
+	}
 	public void MoveLeader(){
 		Vector2 direction = Input.GetVector("a", "d", "w", "s");	//Grab input from WASD keys 
 		party[0].Velocity = direction * playerSpeed;				//Set leader movement to whatever input was read
@@ -34,9 +39,5 @@ public class Party
 			}
 		}
 	}
-	public CharacterBody2D CreateCharacter(PackedScene scene){
-		CharacterBody2D newScene = scene.Instantiate<CharacterBody2D>();	//Create new CharacterBody from PackedScene that was passed
-		party.Add(newScene);												//Add created character to the party
-		return newScene;													//Return created character to the level
-	}
+
 }
