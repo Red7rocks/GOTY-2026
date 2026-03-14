@@ -9,12 +9,12 @@ public class Party
 	Vector2 lastRecordedPosition;								//Keep track of our previous positions for trailing followers
 
 	int followSpacing = 15;		//How far apart players should follow. can be adjusted
-	int playerSpeed = 400;		//How fast players can move. can be adjusted
+	int playerSpeed = 7;		//How fast players can move. can be adjusted
 	
 	public void MoveLeader(){
 		Vector2 direction = Input.GetVector("a", "d", "w", "s");	//Grab input from WASD keys 
 		party[0].Velocity = direction * playerSpeed;				//Set leader movement to whatever input was read
-		party[0].MoveAndSlide();									//Actually move the player
+		party[0].MoveAndCollide(party[0].Velocity);					//Actually move the player
 	}
 	public void recordPosition(){
 		if (positions.Count == 0 || party[0].GlobalPosition.DistanceTo(lastRecordedPosition) > 0){	//Record current position if no positions have been recorded yet,

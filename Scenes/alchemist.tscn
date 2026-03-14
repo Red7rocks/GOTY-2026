@@ -39,7 +39,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5d4b"]
-size = Vector2(54.5, 55.875)
+size = Vector2(59.25, 63.9375)
 
 [node name="Alchemist" type="CharacterBody2D" unique_id=567741228]
 collision_mask = 2
@@ -51,4 +51,5 @@ autoplay = "default"
 frame_progress = 0.8834865
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=597054025]
+position = Vector2(-7.625, 10.96875)
 shape = SubResource("RectangleShape2D_k5d4b")

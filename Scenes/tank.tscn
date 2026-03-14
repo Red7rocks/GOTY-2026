@@ -39,7 +39,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ys04"]
-size = Vector2(16, 11)
+size = Vector2(76, 53.5)
 
 [node name="Tank" type="CharacterBody2D" unique_id=1670933510]
 collision_mask = 2
@@ -51,4 +51,5 @@ autoplay = "default"
 frame_progress = 0.34440413
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=759430888]
+position = Vector2(-2, 1.25)
 shape = SubResource("RectangleShape2D_0ys04")

@@ -1,10 +1,65 @@
 [gd_scene format=3 uid="uid://cb6i2csoswscr"]
 
+[ext_resource type="Script" uid="uid://cwq1xsroe05go" path="res://Scenes/Saloon.cs" id="1_rs0cq"]
+[ext_resource type="Texture2D" uid="uid://b7uncpxg54gim" path="res://Sprites/saloon.png" id="2_wa1r4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w01x6"]
+atlas = ExtResource("2_wa1r4")
+region = Rect2(0, 0, 25, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiyr6"]
+atlas = ExtResource("2_wa1r4")
+region = Rect2(25, 0, 25, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g47cs"]
+atlas = ExtResource("2_wa1r4")
+region = Rect2(50, 0, 25, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q78r"]
+atlas = ExtResource("2_wa1r4")
+region = Rect2(75, 0, 25, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hivi7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w01x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiyr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g47cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q78r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8g7oq"]
+size = Vector2(174, 112)
 
-[node name="Node2D" type="Area2D" unique_id=1619431890]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rs0cq"]
+radius = 109.0
+height = 290.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1624067558]
+[node name="Node2D" type="StaticBody2D" unique_id=682668532]
+collision_layer = 2
+script = ExtResource("1_rs0cq")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1644664519]
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_hivi7")
+frame_progress = 0.091035426
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=389724751]
 shape = SubResource("RectangleShape2D_8g7oq")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1593458144]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1111230711]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_rs0cq")

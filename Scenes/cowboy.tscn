@@ -39,7 +39,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th4sq"]
-size = Vector2(12, 15)
+size = Vector2(69, 65.5)
 
 [node name="Cowboy" type="CharacterBody2D" unique_id=2135101203]
 collision_mask = 2
@@ -51,4 +51,5 @@ autoplay = "default"
 frame_progress = 0.48981485
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=570317195]
+position = Vector2(-1.5, 4.25)
 shape = SubResource("RectangleShape2D_th4sq")
