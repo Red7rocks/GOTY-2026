@@ -12,4 +12,6 @@ color = Color(1, 1, 0.6039216, 1)
 
 [node name="Buildings" type="Node2D" parent="." unique_id=563322202]
 
+[node name="Enemies" type="Node2D" parent="." unique_id=1677377300]
+
 [node name="Party" type="Node2D" parent="." unique_id=1533107015]

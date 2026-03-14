@@ -16,6 +16,6 @@ public partial class Saloon : StaticBody2D
 	}
 	public override void _Ready()
 	{
-		Position = new Vector2(650, 100);
+		Position = new Vector2(650, 100);	//Set spawn point of saloon on map
 	}
 }

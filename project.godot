@@ -13,7 +13,6 @@ config_version=5
 config/name="GOTY-2026"
 run/main_scene="uid://l21ysy0damh"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
-config/icon="res://icon.svg"
 
 [display]
 
@@ -51,6 +50,7 @@ d={
 
 2d_physics/layer_1="Players"
 2d_physics/layer_2="Buildings"
+2d_physics/layer_3="Enemies"
 
 [physics]
 

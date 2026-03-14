@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c13trf4xsnphs"]
+
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/BadGuy.cs" id="1_xratm"]
+[ext_resource type="Texture2D" uid="uid://cqcgg5pgup6g" path="res://Sprites/badguy.png" id="2_r7euu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m86t4"]
+atlas = ExtResource("2_r7euu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw4hp"]
+atlas = ExtResource("2_r7euu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qual2"]
+atlas = ExtResource("2_r7euu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d0fi"]
+atlas = ExtResource("2_r7euu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_me11b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m86t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw4hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qual2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d0fi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upfif"]
+size = Vector2(22, 28)
+
+[node name="BadGuy" type="StaticBody2D" unique_id=504548312]
+scale = Vector2(5, 5)
+collision_layer = 4
+script = ExtResource("1_xratm")
+
+[node name="BadGuyAnimationSprite" type="AnimatedSprite2D" parent="." unique_id=469969295]
+sprite_frames = SubResource("SpriteFrames_me11b")
+autoplay = "default"
+frame_progress = 0.032493863
+
+[node name="BadGuyCollision" type="CollisionShape2D" parent="." unique_id=786831009]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_upfif")

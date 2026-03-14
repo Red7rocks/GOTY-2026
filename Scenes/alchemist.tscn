@@ -42,7 +42,7 @@ animations = [{
 size = Vector2(59.25, 63.9375)
 
 [node name="Alchemist" type="CharacterBody2D" unique_id=567741228]
-collision_mask = 2
+collision_mask = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1866542353]
 scale = Vector2(5, 5)

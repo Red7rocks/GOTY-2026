@@ -3,16 +3,19 @@ using System;
 
 public partial class Level : Node2D
 {
-	PackedScene cowboyScene = ResourceLoader.Load<PackedScene>("res://Scenes/cowboy.tscn");
-	PackedScene alchemistScene = ResourceLoader.Load<PackedScene>("res://Scenes/alchemist.tscn");
-	PackedScene mageScene = ResourceLoader.Load<PackedScene>("res://Scenes/mage.tscn");
-	PackedScene tankScene = ResourceLoader.Load<PackedScene>("res://Scenes/tank.tscn");
-	PackedScene saloonScene = ResourceLoader.Load<PackedScene>("res://Scenes/saloon.tscn");
+	PackedScene cowboyScene = GD.Load<PackedScene>("res://Scenes/cowboy.tscn");
+	PackedScene alchemistScene = GD.Load<PackedScene>("res://Scenes/alchemist.tscn");
+	PackedScene mageScene = GD.Load<PackedScene>("res://Scenes/mage.tscn");
+	PackedScene tankScene = GD.Load<PackedScene>("res://Scenes/tank.tscn");
+	PackedScene saloonScene = GD.Load<PackedScene>("res://Scenes/saloon.tscn");
+	PackedScene badguyScene = GD.Load<PackedScene>("res://Scenes/bad_guy.tscn");
 
 	Node2D levelParty;		//Container that will spawn all characters in level
 	Node2D levelBuildings;	//Container that will spawn all buildings in the level
+	Node2D levelEnemies;			//Container that will spawn all enemies in the level
 	Saloon saloon;			//Saloon object accessible across functions;
 	Party party;			//Container that holds all player/movement logic
+	BadGuy badguy;
 
 	public void nearbySaloon(){
 		//Prompt player if they want to enter
@@ -21,9 +24,11 @@ public partial class Level : Node2D
 	public override void _Ready()
 	{
 		party = new Party();
-		Saloon saloon = saloonScene.Instantiate<Saloon>();
+		saloon = saloonScene.Instantiate<Saloon>();
+		badguy = badguyScene.Instantiate<BadGuy>();
 		levelParty = GetNode<Node2D>("Party");
 		levelBuildings = GetNode<Node2D>("Buildings");
+		levelEnemies = GetNode<Node2D>("Enemies");
 
 		levelParty.AddChild(party.CreateCharacter(cowboyScene));			//Add a cowboy to the party and the level party in one call
 		levelParty.AddChild(party.CreateCharacter(alchemistScene));			//Add an alchemist to the party and the level party in one call
@@ -32,6 +37,9 @@ public partial class Level : Node2D
 		
 		levelBuildings.AddChild(saloon);
 		saloon.nearby += nearbySaloon;
+		
+		levelEnemies.AddChild(badguy);
+		//saloon.nearby += nearbySaloon;
 	}
 	public override void _PhysicsProcess(double delta)
 	{

@@ -42,7 +42,7 @@ animations = [{
 size = Vector2(76, 53.5)
 
 [node name="Tank" type="CharacterBody2D" unique_id=1670933510]
-collision_mask = 2
+collision_mask = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=323727275]
 scale = Vector2(5, 5)
