@@ -47,4 +47,7 @@ public partial class Party : Node
 	public CharacterBody2D getCharacter(int member){
 		return members[member];
 	}
+	public void changeScene(Node2D targetScene){
+		//Move logic for party scene switching here
+	}
 }
