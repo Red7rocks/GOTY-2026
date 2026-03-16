@@ -3,10 +3,6 @@ using System;
 
 public partial class Level : Node2D
 {
-	PackedScene mageScene = GD.Load<PackedScene>("res://Scenes/Classes/mage.tscn");
-	PackedScene tankScene = GD.Load<PackedScene>("res://Scenes/Classes/tank.tscn");
-	PackedScene cowboyScene = GD.Load<PackedScene>("res://Scenes/Classes/cowboy.tscn");
-	PackedScene alchemistScene = GD.Load<PackedScene>("res://Scenes/Classes/alchemist.tscn");
 	PackedScene saloonScene = GD.Load<PackedScene>("res://Scenes/Buildings/saloon.tscn");
 	PackedScene badguyScene = GD.Load<PackedScene>("res://Scenes/Enemies/bad_guy.tscn");
 	PackedScene battleScene = GD.Load<PackedScene>("res://Scenes/battle.tscn");
@@ -30,6 +26,14 @@ public partial class Level : Node2D
 	}
 	private void DeferredChangeScene()
 	{
+		for (int i = 0; i < Global.Party.getPartyCount(); i++)
+		{
+			var character = Global.Party.getCharacter(i);
+			character.GlobalPosition = Global.levelSpawn;
+			if (character.GetParent() != null)
+				character.GetParent().RemoveChild(character);
+			Global.Party.AddChild(character);
+		}
 		GetTree().ChangeSceneToPacked(battleScene);
 	}
 	public void addBuilding(LevelObject levOb, Vector2 position){
@@ -51,17 +55,16 @@ public partial class Level : Node2D
 		levelParty = GetNode<Node2D>("Party");				//Get reference to Party node in level scene
 		levelBuildings = GetNode<Node2D>("Buildings");		//Get reference to Buildings node in level scene
 		levelEnemies = GetNode<Node2D>("Enemies");			//Get reference to Enemies node in level scene
-
-		Global.Party.CreateCharacter(cowboyScene);			//Add a cowboy to the party and the level in one call
-		Global.Party.CreateCharacter(alchemistScene);			//Add an alchemist to the party and the level in one call
-		Global.Party.CreateCharacter(mageScene);				//Add a mage to the party and the level in one call
-		Global.Party.CreateCharacter(tankScene);				//Add a tank to the party and the level in one call
-
+		
 		for (int i = 0; i < Global.Party.getPartyCount(); i++)
 		{
 			var character = Global.Party.getCharacter(i);
+			character.GlobalPosition = Global.levelSpawn;
+			if (character.GetParent() != null)
+				character.GetParent().RemoveChild(character);
 			levelParty.AddChild(character);
 		}
+			//levelParty.AddChild(character);
 		addBuilding(saloon, new Vector2(650, 100));		//Add saloon building at specified position
 		addEnemy(badguy, new Vector2(650, 600));		//Add badguy enemy at specified position
 	}
@@ -70,6 +73,5 @@ public partial class Level : Node2D
 		Global.Party.MoveLeader();
 		Global.Party.recordPosition();
 		Global.Party.MoveFollowers();
-		GD.Print(GetTree());
 	}
 }

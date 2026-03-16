@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bd26uj8bvtegy"]
+
+[ext_resource type="Script" uid="uid://cc3qw0j7u001p" path="res://Global.cs" id="1_koean"]
+[ext_resource type="PackedScene" uid="uid://cwmsx3kgqi34t" path="res://Scenes/party.tscn" id="2_o8ivi"]
+
+[node name="Global" type="Node2D" unique_id=992702091]
+script = ExtResource("1_koean")
+
+[node name="Party" parent="." unique_id=836548669 instance=ExtResource("2_o8ivi")]
