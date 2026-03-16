@@ -1,3 +1,36 @@
 [gd_scene format=3 uid="uid://bd7ne17k2ja8b"]
 
+[ext_resource type="Texture2D" uid="uid://68k5340rdnb6" path="res://Sprites/battlespaceenemy.png" id="2_jubp0"]
+[ext_resource type="Texture2D" uid="uid://dttg56dxwqnlc" path="res://Sprites/battlespacegreen.png" id="3_3t07m"]
+[ext_resource type="Texture2D" uid="uid://c2ifis6q441mi" path="res://Sprites/battlespaceorange.png" id="4_0y54j"]
+[ext_resource type="Texture2D" uid="uid://gbwdwmoaccoy" path="res://Sprites/battlespacepurple.png" id="5_gfdt3"]
+[ext_resource type="Texture2D" uid="uid://cif76gd82q5h4" path="res://Sprites/battlespacered.png" id="6_5qgfh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rogp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jubp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3t07m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0y54j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gfdt3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5qgfh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="BattleSpot" type="Node2D" unique_id=400236875]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=588932563]
+sprite_frames = SubResource("SpriteFrames_1rogp")
+frame_progress = 0.39588895
