@@ -14,7 +14,6 @@ public partial class Party : Node
 	public void CreateCharacter(PackedScene character){
 		CharacterBody2D newCharacter = character.Instantiate<CharacterBody2D>();	//Create new CharacterBody from PackedScene that was passed
 		members.Add(newCharacter);												//Add created character to the partyd
-		AddChild(newCharacter);
 	}
 	public void MoveLeader(){
 		if (members.Count == 0)
@@ -47,7 +46,19 @@ public partial class Party : Node
 	public CharacterBody2D getCharacter(int member){
 		return members[member];
 	}
-	public void changeScene(Node2D targetScene){
-		//Move logic for party scene switching here
+	public void AddPlayersToScene(Node parentNode){
+		foreach (var character in members)
+		{
+			if (!GodotObject.IsInstanceValid(character))
+				continue;
+			if (character.GetParent() == null)
+			{
+				parentNode.AddChild(character);
+			}
+			else
+			{
+				character.Reparent(parentNode, true);
+			}	
+		}
 	}
 }

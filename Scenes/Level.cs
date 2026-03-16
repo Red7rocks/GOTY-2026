@@ -13,6 +13,7 @@ public partial class Level : Node2D
 
 	LevelObject saloon;			//Saloon object accessible across functions;
 	LevelObject badguy;			//badguy object accessible across functions;
+	private SceneTree tree;
 
 	public void nearbyBuilding(){
 		//Prompt player if they want to enter
@@ -21,20 +22,13 @@ public partial class Level : Node2D
 	public void notNearbyBuilding(){
 		//Remove level entry prompt
 	}
-	public void nearbyEnemy(){
+	public void nearbyEnemy(){		
 		CallDeferred(nameof(DeferredChangeScene));
 	}
 	private void DeferredChangeScene()
 	{
-		for (int i = 0; i < Global.Party.getPartyCount(); i++)
-		{
-			var character = Global.Party.getCharacter(i);
-			character.GlobalPosition = Global.levelSpawn;
-			if (character.GetParent() != null)
-				character.GetParent().RemoveChild(character);
-			Global.Party.AddChild(character);
-		}
-		GetTree().ChangeSceneToPacked(battleScene);
+		Global.Party.AddPlayersToScene(Global.Instance);
+		tree.ChangeSceneToPacked(battleScene);
 	}
 	public void addBuilding(LevelObject levOb, Vector2 position){
 		levelBuildings.AddChild(levOb);		//Add Building to the level
@@ -49,6 +43,7 @@ public partial class Level : Node2D
 	}
 	public override void _Ready()
 	{
+		tree = GetTree();
 		saloon = saloonScene.Instantiate<LevelObject>();	//create saloon object that can be added to the level
 		badguy = badguyScene.Instantiate<LevelObject>();	//create badguy object that can be added to the level
 
@@ -56,15 +51,7 @@ public partial class Level : Node2D
 		levelBuildings = GetNode<Node2D>("Buildings");		//Get reference to Buildings node in level scene
 		levelEnemies = GetNode<Node2D>("Enemies");			//Get reference to Enemies node in level scene
 		
-		for (int i = 0; i < Global.Party.getPartyCount(); i++)
-		{
-			var character = Global.Party.getCharacter(i);
-			character.GlobalPosition = Global.levelSpawn;
-			if (character.GetParent() != null)
-				character.GetParent().RemoveChild(character);
-			levelParty.AddChild(character);
-		}
-			//levelParty.AddChild(character);
+		Global.Party.AddPlayersToScene(levelParty);
 		addBuilding(saloon, new Vector2(650, 100));		//Add saloon building at specified position
 		addEnemy(badguy, new Vector2(650, 600));		//Add badguy enemy at specified position
 	}

@@ -4,31 +4,17 @@ using System;
 public partial class Battle : Node2D
 {
 	PackedScene levelScene = ResourceLoader.Load<PackedScene>("res://Scenes/level.tscn");
-	Node2D levelParty;
+	Node2D battleParty;
 	public override void _Ready()
 	{
-		levelParty = GetNode<Node2D>("Party");				//Get reference to Party node in level scene
-		for (int i = 0; i < Global.Party.getPartyCount(); i++)
-		{
-			var character = Global.Party.getCharacter(i);
-			character.GlobalPosition = Global.levelSpawn;
-			if (character.GetParent() != null)
-				character.GetParent().RemoveChild(character);
-			levelParty.AddChild(character);
-		}
+		battleParty = GetNode<Node2D>("Party");				//Get reference to Party node in level scene
+		Global.Party.AddPlayersToScene(battleParty);
 	}
 	public override void _Input(InputEvent @event)
 	{
 		if (@event.IsActionPressed("space"))
 		{
-			for (int i = 0; i < Global.Party.getPartyCount(); i++)
-			{
-				var character = Global.Party.getCharacter(i);
-				character.GlobalPosition = Global.levelSpawn;
-				if (character.GetParent() != null)
-					character.GetParent().RemoveChild(character);
-				Global.Party.AddChild(character);
-			}
+			Global.Party.AddPlayersToScene(Global.Instance);
 			GetTree().ChangeSceneToPacked(levelScene);
 		}
 		
