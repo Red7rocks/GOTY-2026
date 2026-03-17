@@ -30,6 +30,7 @@ animations = [{
 }]
 
 [node name="BattleSpot" type="Node2D" unique_id=400236875]
+scale = Vector2(5, 5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=588932563]
 sprite_frames = SubResource("SpriteFrames_1rogp")
