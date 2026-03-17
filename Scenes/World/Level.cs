@@ -15,6 +15,7 @@ public partial class Level : Node2D
 
 	LevelObject saloon;			//Saloon object accessible across functions;
 	LevelObject badguy;			//badguy object accessible across functions;
+	bool canSpawn = false;
 
 	public void nearbyBuilding(){
 		CallDeferred(nameof(DeferredEnterBuilding));
@@ -29,13 +30,17 @@ public partial class Level : Node2D
 	}
 	private void DeferredEnterBattle()
 	{
+		if(canSpawn){
 		Global.Party.AddPlayersToScene(Global.Instance);
 		tree.ChangeSceneToPacked(battleScene);
+		}
 	}
 	private void DeferredEnterBuilding()
 	{
-		Global.Party.AddPlayersToScene(Global.Instance);
-		tree.ChangeSceneToPacked(buildingScene);
+		if(canSpawn){
+			Global.Party.AddPlayersToScene(Global.Instance);
+			tree.ChangeSceneToPacked(buildingScene);
+		}
 	}
 	public void addBuilding(LevelObject levOb, Vector2 position){
 		levelBuildings.AddChild(levOb);		//Add Building to the level
@@ -48,18 +53,24 @@ public partial class Level : Node2D
 		levOb.Position = position;			//Set Enemy position
 		levOb.nearby += nearbyEnemy;		//Attach signal to trigger when character approaches enemy
 	}
+	void OnSpawnTimerTimeout(){
+		canSpawn = true;
+	}
 	public override void _Ready()
 	{
+		canSpawn = false;
 		tree = GetTree();
+		GetNode<Timer>("SpawnTimer").Start();
 		saloon = saloonScene.Instantiate<LevelObject>();	//create saloon object that can be added to the level
 		badguy = badguyScene.Instantiate<LevelObject>();	//create badguy object that can be added to the level
 
 		levelParty = GetNode<Node2D>("Party");				//Get reference to Party node in level scene
 		levelBuildings = GetNode<Node2D>("Buildings");		//Get reference to Buildings node in level scene
 		levelEnemies = GetNode<Node2D>("Enemies");			//Get reference to Enemies node in level scene
-		
-		Global.Party.AddPlayersToScene(levelParty);
+
 		Global.Party.setPartyPosition(Global.levelSpawn);
+		Global.Party.AddPlayersToScene(levelParty);
+
 		addBuilding(saloon, new Vector2(650, 100));		//Add saloon building at specified position
 		addEnemy(badguy, new Vector2(650, 600));		//Add badguy enemy at specified position
 	}

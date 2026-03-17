@@ -54,6 +54,7 @@ script = ExtResource("1_xratm")
 [node name="AnimationSprite2D" type="AnimatedSprite2D" parent="." unique_id=469969295]
 position = Vector2(1.5, 0)
 sprite_frames = SubResource("SpriteFrames_me11b")
+autoplay = "default"
 frame = 3
 frame_progress = 1.0
 

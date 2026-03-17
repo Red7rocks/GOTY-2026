@@ -11,8 +11,8 @@ public partial class House : Node2D
 	{
 		tree = GetTree();
 		houseParty = GetNode<Node2D>("Party");				//Get reference to Party node in level scene
-		Global.Party.AddPlayersToScene(houseParty);
 		Global.Party.setPartyPosition(Global.levelSpawn);
+		Global.Party.AddPlayersToScene(houseParty);
 	}
 	public override void _Input(InputEvent @event)
 	{

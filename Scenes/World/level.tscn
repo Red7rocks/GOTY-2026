@@ -15,3 +15,7 @@ color = Color(1, 1, 0.6039216, 1)
 [node name="Enemies" type="Node2D" parent="." unique_id=1677377300]
 
 [node name="Party" type="Node2D" parent="." unique_id=1533107015]
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=67525661]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]
