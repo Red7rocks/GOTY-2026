@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb6i2csoswscr"]
 
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/LevelObject.cs" id="1_hgdn4"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="1_hgdn4"]
 [ext_resource type="Texture2D" uid="uid://b7uncpxg54gim" path="res://Sprites/saloon.png" id="2_hu4dj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w01x6"]

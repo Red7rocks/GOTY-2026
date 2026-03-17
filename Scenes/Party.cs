@@ -59,6 +59,8 @@ public partial class Party : Node
 		}
 	}
 	public void setPartyPosition(Vector2 position){
+		if (members.Count == 0)
+			return;
 		for (int i = 0; i < members.Count; i++){
 			members[i].GlobalPosition = position;		//Set all players to specified position
 		}

@@ -1,8 +1,74 @@
 [gd_scene format=3 uid="uid://jtnow6al3foj"]
 
 [ext_resource type="Texture2D" uid="uid://cq12l6b3itjlk" path="res://Sprites/kiosk.png" id="1_10pcf"]
+[ext_resource type="Texture2D" uid="uid://kkuxr3jty01t" path="res://Sprites/shopkeeper.png" id="1_hn4kv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3os3a"]
+atlas = ExtResource("1_hn4kv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_426bw"]
+atlas = ExtResource("1_hn4kv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_had14"]
+atlas = ExtResource("1_hn4kv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opvqe"]
+atlas = ExtResource("1_hn4kv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irugc"]
+atlas = ExtResource("1_hn4kv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hevl"]
+atlas = ExtResource("1_hn4kv")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mip7b"]
+atlas = ExtResource("1_hn4kv")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8fp8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3os3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_426bw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_had14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opvqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irugc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hevl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mip7b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Shopkeeper" type="Node2D" unique_id=739375244]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=906784144]
+position = Vector2(0, -40)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8fp8t")
+autoplay = "default"
+frame_progress = 0.52776176
+
 [node name="Kiosk" type="Sprite2D" parent="." unique_id=810690641]
+scale = Vector2(4, 4)
 texture = ExtResource("1_10pcf")

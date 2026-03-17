@@ -3,9 +3,11 @@ using System;
 
 public partial class Level : Node2D
 {
+	private SceneTree tree;
 	PackedScene saloonScene = GD.Load<PackedScene>("res://Scenes/Buildings/saloon.tscn");
 	PackedScene badguyScene = GD.Load<PackedScene>("res://Scenes/Enemies/bad_guy.tscn");
 	PackedScene battleScene = GD.Load<PackedScene>("res://Scenes/Battle/battle.tscn");
+	PackedScene buildingScene = GD.Load<PackedScene>("res://Scenes/Buildings/house.tscn");
 
 	Node2D levelParty;		//Container that will spawn all characters in level
 	Node2D levelBuildings;	//Container that will spawn all buildings in the level
@@ -13,9 +15,9 @@ public partial class Level : Node2D
 
 	LevelObject saloon;			//Saloon object accessible across functions;
 	LevelObject badguy;			//badguy object accessible across functions;
-	private SceneTree tree;
 
 	public void nearbyBuilding(){
+		CallDeferred(nameof(DeferredEnterBuilding));
 		//Prompt player if they want to enter
 		//if they do, change scene
 	}
@@ -23,12 +25,17 @@ public partial class Level : Node2D
 		//Remove level entry prompt
 	}
 	public void nearbyEnemy(){		
-		CallDeferred(nameof(DeferredChangeScene));
+		CallDeferred(nameof(DeferredEnterBattle));
 	}
-	private void DeferredChangeScene()
+	private void DeferredEnterBattle()
 	{
 		Global.Party.AddPlayersToScene(Global.Instance);
 		tree.ChangeSceneToPacked(battleScene);
+	}
+	private void DeferredEnterBuilding()
+	{
+		Global.Party.AddPlayersToScene(Global.Instance);
+		tree.ChangeSceneToPacked(buildingScene);
 	}
 	public void addBuilding(LevelObject levOb, Vector2 position){
 		levelBuildings.AddChild(levOb);		//Add Building to the level
