@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cif76gd82q5h4"
-path="res://.godot/imported/battlespacered.png-1654e53aad5c60ac9235572c4d2b77cd.ctex"
+uid="uid://calyk86qpaye8"
+path="res://.godot/imported/bullfrog.png-59cd7c2515e9e88ff4b5bdcefe22adcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/battlespacered.png"
-dest_files=["res://.godot/imported/battlespacered.png-1654e53aad5c60ac9235572c4d2b77cd.ctex"]
+source_file="res://Sprites/Characters/bullfrog.png"
+dest_files=["res://.godot/imported/bullfrog.png-59cd7c2515e9e88ff4b5bdcefe22adcc.ctex"]
 
 [params]
 

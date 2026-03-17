@@ -54,7 +54,7 @@ public partial class Level : Node2D
 		levOb.nearby += nearbyEnemy;		//Attach signal to trigger when character approaches enemy
 	}
 	void OnSpawnTimerTimeout(){
-		canSpawn = true;
+		canSpawn = true;		//Wait 1 second before allowing players to enter battle so game can first set party position properly
 	}
 	public override void _Ready()
 	{

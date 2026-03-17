@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d6gc1sp78dje"
-path="res://.godot/imported/planks.png-1db92d80b075b550c186986aedec8157.ctex"
+uid="uid://gbwdwmoaccoy"
+path="res://.godot/imported/battlespacepurple.png-d1f3937733f204edd0779a932095153e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/planks.png"
-dest_files=["res://.godot/imported/planks.png-1db92d80b075b550c186986aedec8157.ctex"]
+source_file="res://Sprites/BattleSprites/battlespacepurple.png"
+dest_files=["res://.godot/imported/battlespacepurple.png-d1f3937733f204edd0779a932095153e.ctex"]
 
 [params]
 

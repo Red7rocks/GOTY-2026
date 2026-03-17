@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gmo0njiwsy1v"
-path="res://.godot/imported/Alchemistfrog.png-05774a02ad50b0b2d8403199cea3bee3.ctex"
+uid="uid://c2ifis6q441mi"
+path="res://.godot/imported/battlespaceorange.png-fdaedbc2bcf0f2d1cf8143c5b73fa9d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Alchemistfrog.png"
-dest_files=["res://.godot/imported/Alchemistfrog.png-05774a02ad50b0b2d8403199cea3bee3.ctex"]
+source_file="res://Sprites/BattleSprites/battlespaceorange.png"
+dest_files=["res://.godot/imported/battlespaceorange.png-fdaedbc2bcf0f2d1cf8143c5b73fa9d2.ctex"]
 
 [params]
 

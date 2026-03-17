@@ -10,9 +10,9 @@ public partial class House : Node2D
 	public override void _Ready()
 	{
 		tree = GetTree();
-		houseParty = GetNode<Node2D>("Party");				//Get reference to Party node in level scene
+		houseParty = GetNode<Node2D>("Party");				//Get reference to Party node in house scene
 		Global.Party.setPartyPosition(Global.levelSpawn);
-		Global.Party.AddPlayersToScene(houseParty);
+		Global.Party.AddPlayersToScene(houseParty);			
 	}
 	public override void _Input(InputEvent @event)
 	{

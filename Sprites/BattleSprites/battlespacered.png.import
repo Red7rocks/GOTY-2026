@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du32c12dfngx8"
-path="res://.godot/imported/magefrog.png-3594dc5907c2c84b0b230263f1dae0b9.ctex"
+uid="uid://cif76gd82q5h4"
+path="res://.godot/imported/battlespacered.png-5bb96b64479df2658e856ffb39d75b15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/magefrog.png"
-dest_files=["res://.godot/imported/magefrog.png-3594dc5907c2c84b0b230263f1dae0b9.ctex"]
+source_file="res://Sprites/BattleSprites/battlespacered.png"
+dest_files=["res://.godot/imported/battlespacered.png-5bb96b64479df2658e856ffb39d75b15.ctex"]
 
 [params]
 

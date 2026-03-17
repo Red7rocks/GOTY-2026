@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2ifis6q441mi"
-path="res://.godot/imported/battlespaceorange.png-bd8631d4348517457198c6178815e33c.ctex"
+uid="uid://kkuxr3jty01t"
+path="res://.godot/imported/shopkeeper.png-67eb35a3792aefedaa2605b66f14917a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/battlespaceorange.png"
-dest_files=["res://.godot/imported/battlespaceorange.png-bd8631d4348517457198c6178815e33c.ctex"]
+source_file="res://Sprites/Characters/shopkeeper.png"
+dest_files=["res://.godot/imported/shopkeeper.png-67eb35a3792aefedaa2605b66f14917a.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cgigqyucxmc4n"]
 
-[ext_resource type="Texture2D" uid="uid://du32c12dfngx8" path="res://Sprites/magefrog.png" id="1_y4der"]
+[ext_resource type="Texture2D" uid="uid://du32c12dfngx8" path="res://Sprites/Characters/magefrog.png" id="1_y4der"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xdm5"]
 atlas = ExtResource("1_y4der")

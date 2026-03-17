@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gbwdwmoaccoy"
-path="res://.godot/imported/battlespacepurple.png-ce574758faf10485daf247b78bd25f16.ctex"
+uid="uid://b7uncpxg54gim"
+path="res://.godot/imported/saloon.png-2262d6d0b064a27280a9bc8b915b5ea8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/battlespacepurple.png"
-dest_files=["res://.godot/imported/battlespacepurple.png-ce574758faf10485daf247b78bd25f16.ctex"]
+source_file="res://Sprites/Buildings/saloon.png"
+dest_files=["res://.godot/imported/saloon.png-2262d6d0b064a27280a9bc8b915b5ea8.ctex"]
 
 [params]
 

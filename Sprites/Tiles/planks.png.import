@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://68k5340rdnb6"
-path="res://.godot/imported/battlespaceenemy.png-d923932e8d7bf7ce70adc055f0fb771f.ctex"
+uid="uid://d6gc1sp78dje"
+path="res://.godot/imported/planks.png-6d160e28109b27f17579eae23b351f84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/battlespaceenemy.png"
-dest_files=["res://.godot/imported/battlespaceenemy.png-d923932e8d7bf7ce70adc055f0fb771f.ctex"]
+source_file="res://Sprites/Tiles/planks.png"
+dest_files=["res://.godot/imported/planks.png-6d160e28109b27f17579eae23b351f84.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqcgg5pgup6g"
-path="res://.godot/imported/badguy.png-d1b7019f00051e6fb1b846b09b8ba448.ctex"
+uid="uid://c6lixq62cnlt7"
+path="res://.godot/imported/RightDoor.png-1c36cd3141a0de816a0d3fd1ae0e950d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/badguy.png"
-dest_files=["res://.godot/imported/badguy.png-d1b7019f00051e6fb1b846b09b8ba448.ctex"]
+source_file="res://Sprites/Furniture/RightDoor.png"
+dest_files=["res://.godot/imported/RightDoor.png-1c36cd3141a0de816a0d3fd1ae0e950d.ctex"]
 
 [params]
 

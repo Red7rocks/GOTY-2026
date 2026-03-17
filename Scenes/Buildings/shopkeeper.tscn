@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://jtnow6al3foj"]
 
-[ext_resource type="Texture2D" uid="uid://cq12l6b3itjlk" path="res://Sprites/kiosk.png" id="1_10pcf"]
-[ext_resource type="Texture2D" uid="uid://kkuxr3jty01t" path="res://Sprites/shopkeeper.png" id="1_hn4kv"]
+[ext_resource type="Texture2D" uid="uid://cq12l6b3itjlk" path="res://Sprites/Furniture/kiosk.png" id="1_10pcf"]
+[ext_resource type="Texture2D" uid="uid://kkuxr3jty01t" path="res://Sprites/Characters/shopkeeper.png" id="1_hn4kv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3os3a"]
 atlas = ExtResource("1_hn4kv")

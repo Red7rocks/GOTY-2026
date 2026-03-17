@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7uncpxg54gim"
-path="res://.godot/imported/saloon.png-f68247d6113211fc881865f16326d92b.ctex"
+uid="uid://cqcgg5pgup6g"
+path="res://.godot/imported/badguy.png-bc64075bcfe2234aa6d94771feabb788.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/saloon.png"
-dest_files=["res://.godot/imported/saloon.png-f68247d6113211fc881865f16326d92b.ctex"]
+source_file="res://Sprites/Characters/badguy.png"
+dest_files=["res://.godot/imported/badguy.png-bc64075bcfe2234aa6d94771feabb788.ctex"]
 
 [params]
 

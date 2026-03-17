@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq12l6b3itjlk"
-path="res://.godot/imported/kiosk.png-7b8dc8d62fea9818be7c3fc80e26547d.ctex"
+uid="uid://5k204h8wvvhd"
+path="res://.godot/imported/cowboyfrog.png-a9b8309d6211e0af988d82bd9f312f18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/kiosk.png"
-dest_files=["res://.godot/imported/kiosk.png-7b8dc8d62fea9818be7c3fc80e26547d.ctex"]
+source_file="res://Sprites/Characters/cowboyfrog.png"
+dest_files=["res://.godot/imported/cowboyfrog.png-a9b8309d6211e0af988d82bd9f312f18.ctex"]
 
 [params]
 

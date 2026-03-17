@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dttg56dxwqnlc"
-path="res://.godot/imported/battlespacegreen.png-331c9623edc879148def6e5dedd4c468.ctex"
+uid="uid://w1puqwtssm6t"
+path="res://.godot/imported/walltiles.png-950f0d929aadaf9c95044ad4d7700354.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/battlespacegreen.png"
-dest_files=["res://.godot/imported/battlespacegreen.png-331c9623edc879148def6e5dedd4c468.ctex"]
+source_file="res://Sprites/Tiles/walltiles.png"
+dest_files=["res://.godot/imported/walltiles.png-950f0d929aadaf9c95044ad4d7700354.ctex"]
 
 [params]
 
