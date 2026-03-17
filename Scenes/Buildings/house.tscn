@@ -31,3 +31,5 @@ tile_set = SubResource("TileSet_d4ch1")
 
 [node name="Shopkeeper" parent="." unique_id=739375244 instance=ExtResource("2_i6h3i")]
 position = Vector2(802, 296)
+
+[node name="Party" type="Node2D" parent="." unique_id=1647339645]

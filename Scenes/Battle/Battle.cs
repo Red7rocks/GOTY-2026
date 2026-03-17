@@ -3,9 +3,10 @@ using System;
 
 public partial class Battle : Node2D
 {
+	private SceneTree tree;
 	PackedScene levelScene = ResourceLoader.Load<PackedScene>("res://Scenes/World/level.tscn");
 	Node2D battleParty;
-	private SceneTree tree;
+
 	public override void _Ready()
 	{
 		tree = GetTree();
