@@ -22,4 +22,10 @@ public partial class House : Node2D
 			tree.ChangeSceneToPacked(levelScene);
 		}
 	}
+	public override void _PhysicsProcess(double delta)
+	{
+		Global.Party.MoveLeader();
+		Global.Party.recordPosition();
+		Global.Party.MoveFollowers();
+	}
 }

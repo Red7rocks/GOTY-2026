@@ -63,12 +63,13 @@ animations = [{
 [node name="Shopkeeper" type="Node2D" unique_id=739375244]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=906784144]
-position = Vector2(0, -40)
-scale = Vector2(2, 2)
+position = Vector2(0, -76)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8fp8t")
 autoplay = "default"
-frame_progress = 0.52776176
+frame = 1
+frame_progress = 0.5289501
 
 [node name="Kiosk" type="Sprite2D" parent="." unique_id=810690641]
-scale = Vector2(4, 4)
+scale = Vector2(6, 6)
 texture = ExtResource("1_10pcf")
