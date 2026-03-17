@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://jtnow6al3foj"]
+
+[ext_resource type="Texture2D" uid="uid://cq12l6b3itjlk" path="res://Sprites/kiosk.png" id="1_10pcf"]
+
+[node name="Shopkeeper" type="Node2D" unique_id=739375244]
+
+[node name="Kiosk" type="Sprite2D" parent="." unique_id=810690641]
+texture = ExtResource("1_10pcf")

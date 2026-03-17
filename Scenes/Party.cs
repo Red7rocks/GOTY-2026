@@ -41,24 +41,31 @@ public partial class Party : Node
 		}
 	}
 	public int getPartyCount(){
-		return members.Count;
+		return members.Count;		//Get number of players in the party
 	}
 	public CharacterBody2D getCharacter(int member){
-		return members[member];
+		return members[member];		//Get specific character in the party
 	}
 	public void AddPlayersToScene(Node parentNode){
-		foreach (var character in members)
-		{
-			if (!GodotObject.IsInstanceValid(character))
+		foreach (var character in members){
+			if (!GodotObject.IsInstanceValid(character)){	//Check that object we are attempting to add is a valid object
 				continue;
-			if (character.GetParent() == null)
-			{
-				parentNode.AddChild(character);
 			}
-			else
-			{
-				character.Reparent(parentNode, true);
+			if (character.GetParent() == null){
+				parentNode.AddChild(character);				//reparent will fail if character does not already have a parent. use Add child in this case
+			} else {
+				character.Reparent(parentNode, true);		//Reassign parent of charactes to scene/node specified
 			}	
+		}
+	}
+	public void setPartyPosition(Vector2 position){
+		for (int i = 0; i < members.Count; i++){
+			members[i].GlobalPosition = position;		//Set all players to specified position
+		}
+		positions.Clear();					//Clear current list of positions
+		lastRecordedPosition = position;
+		for (int i = 0; i < followSpacing * members.Count; i++){
+			positions.Add(position);		// Set all current/past positions to specified value so all players are in sync
 		}
 	}
 }

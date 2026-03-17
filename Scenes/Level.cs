@@ -5,7 +5,7 @@ public partial class Level : Node2D
 {
 	PackedScene saloonScene = GD.Load<PackedScene>("res://Scenes/Buildings/saloon.tscn");
 	PackedScene badguyScene = GD.Load<PackedScene>("res://Scenes/Enemies/bad_guy.tscn");
-	PackedScene battleScene = GD.Load<PackedScene>("res://Scenes/battle.tscn");
+	PackedScene battleScene = GD.Load<PackedScene>("res://Scenes/Battle/battle.tscn");
 
 	Node2D levelParty;		//Container that will spawn all characters in level
 	Node2D levelBuildings;	//Container that will spawn all buildings in the level
@@ -52,6 +52,7 @@ public partial class Level : Node2D
 		levelEnemies = GetNode<Node2D>("Enemies");			//Get reference to Enemies node in level scene
 		
 		Global.Party.AddPlayersToScene(levelParty);
+		Global.Party.setPartyPosition(Global.levelSpawn);
 		addBuilding(saloon, new Vector2(650, 100));		//Add saloon building at specified position
 		addEnemy(badguy, new Vector2(650, 600));		//Add badguy enemy at specified position
 	}
