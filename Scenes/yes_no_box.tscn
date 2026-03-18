@@ -3,28 +3,40 @@
 [ext_resource type="Texture2D" uid="uid://wvbt1ojiwje5" path="res://Sprites/Tiles/DialogueWindow1.png" id="1_e2cji"]
 [ext_resource type="Texture2D" uid="uid://egb0qmlkflaa" path="res://Sprites/Tiles/YesNoButtons.png" id="2_r22p4"]
 
-[node name="YesNoBox" type="Control" unique_id=173104898]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r22p4"]
+size = Vector2(76, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2cji"]
+size = Vector2(76, 76)
+
+[node name="YesNoBox" type="Node2D" unique_id=2114780192]
 
 [node name="Window" type="Sprite2D" parent="." unique_id=1496385418]
 scale = Vector2(5, 5)
 texture = ExtResource("1_e2cji")
 
-[node name="NoBox" type="Sprite2D" parent="." unique_id=1209391051]
+[node name="Yes" type="Area2D" parent="." unique_id=610783651]
+
+[node name="YesBox" type="Sprite2D" parent="Yes" unique_id=734191108]
+position = Vector2(-50, 17)
+scale = Vector2(5, 5)
+texture = ExtResource("2_r22p4")
+region_enabled = true
+region_rect = Rect2(15, 0, 15, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Yes" unique_id=24422598]
+position = Vector2(-50, 17)
+shape = SubResource("RectangleShape2D_r22p4")
+
+[node name="No" type="Area2D" parent="." unique_id=2004662645]
+
+[node name="NoBox" type="Sprite2D" parent="No" unique_id=1209391051]
 position = Vector2(50, 17)
 scale = Vector2(5, 5)
 texture = ExtResource("2_r22p4")
 region_enabled = true
 region_rect = Rect2(0, 0, 15, 15)
 
-[node name="YesBox" type="Sprite2D" parent="." unique_id=734191108]
-position = Vector2(-50, 17)
-scale = Vector2(5, 5)
-texture = ExtResource("2_r22p4")
-region_enabled = true
-region_rect = Rect2(15, 0, 15, 15)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="No" unique_id=1032228876]
+position = Vector2(50, 17)
+shape = SubResource("RectangleShape2D_e2cji")
