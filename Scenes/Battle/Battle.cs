@@ -12,12 +12,12 @@ public partial class Battle : Node2D
 		tree = GetTree();
 		battleParty = GetNode<Node2D>("Party");				//Get reference to Party node in battle scene
 
-		Global.Party.setPartyPosition(Global.levelSpawn);
+		Global.Party.setPartyPosition(Global.levelSpawn);														//Need to create seperate vector for battle positions
 		Global.Party.AddPlayersToScene(battleParty);		//Add players to Party node
 	}
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("space"))
+		if (@event.IsActionPressed("space"))					//If space bar is pressed
 		{
 			Global.Party.AddPlayersToScene(Global.Instance);	//Add players back to scene transition node
 			tree.ChangeSceneToPacked(levelScene);				//Change back to overworld
@@ -25,7 +25,7 @@ public partial class Battle : Node2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		Global.Party.MoveLeader();
+		Global.Party.MoveLeader();			//Will be replaced with battle logic later
 		Global.Party.recordPosition();
 		Global.Party.MoveFollowers();
 	}

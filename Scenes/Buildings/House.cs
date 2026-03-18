@@ -4,11 +4,13 @@ using System;
 public partial class House : Node2D
 {
 	private SceneTree tree;
+	bool canLeave = false;
+
 	PackedScene levelScene = GD.Load<PackedScene>("res://Scenes/World/level.tscn");
+
 	Node2D houseParty;
 	Node2D houseFurniture;
-	bool canLeave = false;
-	
+
 	private void OnSpawnTimerTimeout(){
 		canLeave = true;		//Wait 1 second before allowing players to enter battle so game can first set party position properly
 	}
@@ -17,18 +19,20 @@ public partial class House : Node2D
 		}
 		private void DeferredEnterDoor()
 		{
-			if(canLeave){			//Check if scene has been loaded for > spawnTimer
-				Global.Party.AddPlayersToScene(Global.Instance);	//Move players back to transition scene
+			if(canLeave){											//Check if scene has been loaded for > spawnTimer
+				Global.Party.AddPlayersToScene(Global.Instance);	//if so, Move players back to transition scene
 				tree.ChangeSceneToPacked(levelScene);				//Load overworld scene
 			}
 	}
 	public override void _Ready()
 	{
 		canLeave = false;
-		tree = GetTree();									//Get static reference to current tree that will be used to transition out of scene later
 		GetNode<Timer>("SpawnTimer").Start();
+		
+		tree = GetTree();									//Get static reference to current tree that will be used to transition out of scene later
 		houseParty = GetNode<Node2D>("Party");				//Get reference to Party node in house scene
 		houseFurniture = GetNode<Node2D>("Furniture");		//Get reference to Furniture node in house scene
+
 		Global.Party.setPartyPosition(Global.levelSpawn);																						//Need to create seperate variable for shop spawn position
 		Global.Party.AddPlayersToScene(houseParty);			//Add players to the house
 

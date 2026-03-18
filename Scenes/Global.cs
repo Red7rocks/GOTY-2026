@@ -17,7 +17,7 @@ public partial class Global : Node		//This script is set to auto load in project
 		Instance = this;			//Create a new global instance on game launch
 		Party = new Party();		//Create our party that will be used across the project
 		AddChild(Party);
-		Party.CreateCharacter(cowboyScene);			//Add a cowboy to the party and the level in one call
+		Party.CreateCharacter(cowboyScene);				//Add a cowboy to the party and the level in one call
 		Party.CreateCharacter(alchemistScene);			//Add an alchemist to the party and the level in one call
 		Party.CreateCharacter(mageScene);				//Add a mage to the party and the level in one call
 		Party.CreateCharacter(tankScene);				//Add a tank to the party and the level in one call

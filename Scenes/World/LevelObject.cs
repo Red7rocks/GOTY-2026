@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class LevelObject : StaticBody2D
+public partial class LevelObject : StaticBody2D			//Generic class for objects in level that detect when players enter/leave nearby area
 {
 	[Signal]
 	public delegate void NearbyEventHandler();
@@ -11,18 +11,16 @@ public partial class LevelObject : StaticBody2D
 	
 	private void OnSurroundingAreaEntered(Node2D body)
 	{	
-		//GetNode<AnimatedSprite2D>("AnimationSprite2D").Play();
 		EmitSignal(SignalName.Nearby);
 	}
 	private void OnSurroundingBodyExited(Node2D body)
 	{	
-		//GetNode<AnimatedSprite2D>("AnimationSprite2D").Stop();
 		EmitSignal(SignalName.NotNearby);
 	}
 	public override void _Ready()
 	{
-		var area = GetNode<Area2D>("SurroundingArea"); // make sure name matches scene
-		area.BodyEntered += OnSurroundingAreaEntered;
+		var area = GetNode<Area2D>("SurroundingArea");
+		area.BodyEntered += OnSurroundingAreaEntered;		//Add signals so enter/exit functions are always attached
 		area.BodyExited += OnSurroundingBodyExited;
 	}
 }
