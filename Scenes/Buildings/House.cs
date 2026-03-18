@@ -39,7 +39,7 @@ public partial class House : Node2D
 		Global.Party.setPartyPosition(Global.levelSpawn);
 		Global.Party.AddPlayersToScene(houseParty);			
 		LevelObject door = doorScene.Instantiate<LevelObject>();
-		addDoor(door, new Vector2(650, 600));
+		addDoor(door, new Vector2(512,811));
 	}
 	public override void _PhysicsProcess(double delta)
 	{
