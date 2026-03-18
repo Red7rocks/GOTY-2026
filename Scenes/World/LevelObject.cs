@@ -12,7 +12,6 @@ public partial class LevelObject : StaticBody2D
 	private void OnSurroundingAreaEntered(Node2D body)
 	{	
 		//GetNode<AnimatedSprite2D>("AnimationSprite2D").Play();
-		GD.Print("ENTERED AREA (HOUSE TEST)");
 		EmitSignal(SignalName.Nearby);
 	}
 	private void OnSurroundingBodyExited(Node2D body)

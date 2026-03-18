@@ -5,45 +5,38 @@ public partial class House : Node2D
 {
 	private SceneTree tree;
 	PackedScene levelScene = GD.Load<PackedScene>("res://Scenes/World/level.tscn");
-	PackedScene doorScene = GD.Load<PackedScene>("res://Scenes/Buildings/door.tscn");
 	Node2D houseParty;
 	Node2D houseFurniture;
-	bool canSpawn = false;
+	bool canLeave = false;
 	
-	void OnSpawnTimerTimeout(){
-		GD.Print("can spawn");
-		canSpawn = true;		//Wait 1 second before allowing players to enter battle so game can first set party position properly
+	private void OnSpawnTimerTimeout(){
+		canLeave = true;		//Wait 1 second before allowing players to enter battle so game can first set party position properly
 	}
-	public void nearbyDoor(){		
-		CallDeferred(nameof(DeferredEnterDoor));
-	}
-	private void DeferredEnterDoor()
-	{
-		if(canSpawn){
-			Global.Party.AddPlayersToScene(Global.Instance);
-			tree.ChangeSceneToPacked(levelScene);
+	private void nearbyDoor(){
+		CallDeferred(nameof(DeferredEnterDoor));		//Calling deferred allows godot to clean up script in memory
 		}
-	}
-	void addDoor(LevelObject levOb, Vector2 position){
-		levOb.Nearby += nearbyDoor;
-		houseFurniture.AddChild(levOb);		//Add Furniture to level
-		levOb.Position = position;			//Set Furniture position
+		private void DeferredEnterDoor()
+		{
+			if(canLeave){			//Check if scene has been loaded for > spawnTimer
+				Global.Party.AddPlayersToScene(Global.Instance);	//Move players back to transition scene
+				tree.ChangeSceneToPacked(levelScene);				//Load overworld scene
+			}
 	}
 	public override void _Ready()
 	{
-		canSpawn = false;
+		canLeave = false;
+		tree = GetTree();									//Get static reference to current tree that will be used to transition out of scene later
 		GetNode<Timer>("SpawnTimer").Start();
-		tree = GetTree();
 		houseParty = GetNode<Node2D>("Party");				//Get reference to Party node in house scene
-		houseFurniture = GetNode<Node2D>("Furniture");
-		Global.Party.setPartyPosition(Global.levelSpawn);
-		Global.Party.AddPlayersToScene(houseParty);			
-		LevelObject door = doorScene.Instantiate<LevelObject>();
-		addDoor(door, new Vector2(512,811));
+		houseFurniture = GetNode<Node2D>("Furniture");		//Get reference to Furniture node in house scene
+		Global.Party.setPartyPosition(Global.levelSpawn);																						//Need to create seperate variable for shop spawn position
+		Global.Party.AddPlayersToScene(houseParty);			//Add players to the house
+
+		GetNode<LevelObject>("Door").Nearby += nearbyDoor;	//Connect house door scene nearby signal to nearbyDoor function
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		Global.Party.MoveLeader();
+		Global.Party.MoveLeader();		//Same logic from level scene
 		Global.Party.recordPosition();
 		Global.Party.MoveFollowers();
 	}
