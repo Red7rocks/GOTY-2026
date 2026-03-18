@@ -41,14 +41,6 @@ public partial class House : Node2D
 		LevelObject door = doorScene.Instantiate<LevelObject>();
 		addDoor(door, new Vector2(650, 600));
 	}
-	/*public override void _Input(InputEvent @event)
-	{
-		if (@event.IsActionPressed("space"))
-		{
-			Global.Party.AddPlayersToScene(Global.Instance);
-			tree.ChangeSceneToPacked(levelScene);
-		}
-	}*/
 	public override void _PhysicsProcess(double delta)
 	{
 		Global.Party.MoveLeader();
