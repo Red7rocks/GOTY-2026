@@ -9,6 +9,7 @@ public partial class YesNoBox : Node2D
 	PackedScene levelScene = ResourceLoader.Load<PackedScene>("res://Scenes/World/level.tscn");	
 	PackedScene targetScene;
 
+	
 	public void moveArrowLeft(){
 		selectionArrow.Position = new Vector2(-50, -40);	//Set arrow to left position, which corresponds to the green check mark
 		canLeave = true;									//Allow player to leave if enter is pressed
@@ -19,6 +20,9 @@ public partial class YesNoBox : Node2D
 	}
 	public void setTargetScene(PackedScene scene){
 		targetScene = scene;
+	}
+	public void setPrompt(String promptText){
+		GetNode<RichTextLabel>("PlayerPrompt").Text = promptText;
 	}
 	public override void _Ready()
 	{

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://1rm5yn8cy8bd"]
+
+[ext_resource type="Texture2D" uid="uid://cc7atu10ib8bx" path="res://Sprites/Items/Spear.png" id="1_lcldk"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="2_1x3f5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1x3f5"]
+radius = 1.4142137
+height = 22.627419
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtl5q"]
+radius = 30.0
+
+[node name="Spear" type="StaticBody2D" unique_id=152804042]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1499029191]
+rotation = 0.7853982
+scale = Vector2(1.75, 1.75)
+shape = SubResource("CapsuleShape2D_1x3f5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=294805411]
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("1_lcldk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1729519182]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1774387462]
+shape = SubResource("CircleShape2D_gtl5q")
+script = ExtResource("2_1x3f5")

@@ -93,3 +93,17 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_0rela")
 autoplay = "default"
 frame_progress = 0.18217428
+
+[node name="PlayerPrompt" type="RichTextLabel" parent="." unique_id=1280642752]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = -100.0
+offset_right = 120.0
+offset_bottom = -80.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1

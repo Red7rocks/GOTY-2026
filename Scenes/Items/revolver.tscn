@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://8igstjnfqopd"]
+
+[ext_resource type="Texture2D" uid="uid://by0aglc8u3srg" path="res://Sprites/Items/revolver.png" id="1_8heyh"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="2_7lp6u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7lp6u"]
+height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lvqg1"]
+radius = 30.0
+
+[node name="Revolver" type="StaticBody2D" unique_id=1326805482]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1542695725]
+position = Vector2(5, 0)
+texture = ExtResource("1_8heyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1281641317]
+position = Vector2(0, -1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7lp6u")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1821845378]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=844325289]
+shape = SubResource("CircleShape2D_lvqg1")
+script = ExtResource("2_7lp6u")

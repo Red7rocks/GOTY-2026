@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d1s3050jmo3bc"]
+
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="1_itn8i"]
+[ext_resource type="Texture2D" uid="uid://dwtpbh3o82qa0" path="res://Sprites/Items/sword.png" id="1_kpc47"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itn8i"]
+radius = 4.242641
+height = 32.526913
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d6nal"]
+radius = 30.0
+
+[node name="Sword" type="StaticBody2D" unique_id=515213115]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_itn8i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=201442733]
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("1_kpc47")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=762907723]
+position = Vector2(1, -1)
+rotation = 0.7853982
+shape = SubResource("CapsuleShape2D_itn8i")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1741134073]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=964319197]
+shape = SubResource("CircleShape2D_d6nal")

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cu86q8cc7ylkb"]
+
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="1_77vle"]
+[ext_resource type="Texture2D" uid="uid://6ltsqjkhelny" path="res://Sprites/Items/pistol.png" id="2_77vle"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77vle"]
+radius = 12.0
+height = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7duq"]
+radius = 30.0
+
+[node name="Pistol" type="StaticBody2D" unique_id=215522392]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_77vle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=99447363]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_77vle")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=298286332]
+position = Vector2(1, 1)
+texture = ExtResource("2_77vle")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=79341611]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=646450211]
+shape = SubResource("CircleShape2D_u7duq")

@@ -24,11 +24,12 @@ public partial class House : Node2D
 		}
 		private void DeferredEnterDoor(Node2D body)
 		{
-			selectionBox = selectionBoxScene.Instantiate<YesNoBox>();									//Create a prompt to ask the player if they want to leave
-			selectionBox.Position =  body.Position + new Vector2(200, -100);		//Set this prompt slightly offset from the door
+			selectionBox = selectionBoxScene.Instantiate<YesNoBox>();					//Create a prompt to ask the player if they want to leave
+			selectionBox.setPrompt("leave building?");
+			selectionBox.Position =  body.Position + new Vector2(200, -100);			//Set this prompt slightly offset from the door
 			selectionBox.setTargetScene(levelScene);
-			AddChild(selectionBox);																	//Add the prompt to the scene
-			selectionBoxActive = true;																//Set flag stating prompt is currently live in the scene
+			AddChild(selectionBox);														//Add the prompt to the scene
+			selectionBoxActive = true;													//Set flag stating prompt is currently live in the scene
 	}
 	private void awayFromDoor(Node2D body){
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters

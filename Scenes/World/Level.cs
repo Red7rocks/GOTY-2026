@@ -39,6 +39,7 @@ public partial class Level : Node2D
 		{
 			if (selectionBoxActive && IsInstanceValid(selectionBox)) return;
 			selectionBox = selectionBoxScene.Instantiate<YesNoBox>();									//Create a prompt to ask the player if they want to leave
+			selectionBox.setPrompt("enter building?");
 			selectionBox.Position =  body.Position + new Vector2(200, -100);		//Set this prompt slightly offset from the door
 			selectionBox.setTargetScene(buildingScene);
 			AddChild(selectionBox);																	//Add the prompt to the scene
