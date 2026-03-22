@@ -15,10 +15,12 @@ public partial class Level : Node2D
 	Node2D levelBuildings;	//Container that will spawn all buildings in the level
 	Node2D levelEnemies;	//Container that will spawn all enemies in the level
 
-	private void notNearbyBuilding(){
+	private void notNearbyBuilding(Node2D body){
+		if(body != Global.Party.getCharacter(0)) return;
 		//Remove level entry prompt, once prompt is implemented
 	}
-	private void nearbyEnemy(){		
+	private void nearbyEnemy(Node2D body){		
+		if(body != Global.Party.getCharacter(0)) return;
 		CallDeferred(nameof(DeferredEnterBattle));		//Call deferred to allow godot to unload current scene
 		}
 		private void DeferredEnterBattle()
@@ -28,9 +30,10 @@ public partial class Level : Node2D
 				tree.ChangeSceneToPacked(battleScene);				//change to battle scene
 			}
 	}
-	private void nearbyBuilding(){
+	private void nearbyBuilding(Node2D body){
 		//Need to Prompt player if they want to enter here
 		//if they do, change scene
+		if(body != Global.Party.getCharacter(0)) return;
 		CallDeferred(nameof(DeferredEnterBuilding));	//Call deferred to allow godot to unload current scene
 		}
 		private void DeferredEnterBuilding()
