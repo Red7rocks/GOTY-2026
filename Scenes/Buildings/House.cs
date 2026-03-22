@@ -3,59 +3,43 @@ using System;
 
 public partial class House : Node2D
 {
-	private SceneTree tree;
-	bool canLeave = false;
-	bool selectionBoxActive = false;
+	private SceneTree tree;		//Private reference to the current tree
+	bool canLeave = false;		//Flag used for setting delay between allowing player to change scenes, to prevent unpredictable spawns
+	bool selectionBoxActive = false;	//Flag used for checking if selection box is currently live as a child of the House scene
 
 	PackedScene levelScene = GD.Load<PackedScene>("res://Scenes/World/level.tscn");
 	PackedScene selectionBoxScene = GD.Load<PackedScene>("res://Scenes/yes_no_box.tscn");
 
-	Node2D houseParty;
-	Node2D houseFurniture;
-	Node2D selectionBox;
+	Node2D houseParty;		//Node referring to our player party
+	Node2D houseFurniture;	//Node to add all furniture in the shop to. need to add assets for shelves/goods/etc.
+	Node2D selectionBox;	//Selection box that will get addded/interacted with whenever the door is approached
 
 
 	private void OnSpawnTimerTimeout(){
 		canLeave = true;		//Wait 1 second before allowing players to enter battle so game can first set party position properly
 	}
 	private void nearbyDoor(Node2D body){
-		if(body != Global.Party.getCharacter(0)) return;
-		CallDeferred(nameof(DeferredEnterDoor));		//Calling deferred allows godot to clean up script in memory
-	}
-	private void DeferredEnterDoor()
+		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
+		CallDeferred(nameof(DeferredEnterDoor));			//Calling deferred allows godot to clean up script in memory
+		}
+		private void DeferredEnterDoor()
 		{
-			selectionBox = selectionBoxScene.Instantiate<Node2D>();
-			selectionBox.Position =  GetNode<Node2D>("Door").Position + new Vector2(200, -100);
-			AddChild(selectionBox);
-			selectionBoxActive = true;
-			if (Input.IsActionPressed("left"))					//If space bar is pressed
-			{
-				GD.Print("move arrow left");
-			}
-			if (Input.IsActionPressed("right"))
-			{
-				GD.Print("Move arrow right");
-			}
-			//	Global.Party.AddPlayersToScene(Global.Instance);	//Add players back to scene transition node
-			//	tree.ChangeSceneToPacked(levelScene);				//Change back to overworld
-			//}
-			//if(canLeave){											//Check if scene has been loaded for > spawnTimer
-			//	Global.Party.AddPlayersToScene(Global.Instance);	//if so, Move players back to transition scene
-			//	tree.ChangeSceneToPacked(levelScene);				//Load overworld scene
-			//}*/
+			selectionBox = selectionBoxScene.Instantiate<Node2D>();									//Create a prompt to ask the player if they want to leave
+			selectionBox.Position =  GetNode<Node2D>("Door").Position + new Vector2(200, -100);		//Set this prompt slightly offset from the door
+			AddChild(selectionBox);																	//Add the prompt to the scene
+			selectionBoxActive = true;																//Set flag stating prompt is currently live in the scene
 	}
 	private void awayFromDoor(Node2D body){
-		if(body != Global.Party.getCharacter(0)) return;
-		GD.Print(selectionBoxActive);
-		if(selectionBoxActive){
-			RemoveChild(selectionBox);
+		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
+		if(selectionBoxActive && GodotObject.IsInstanceValid(selectionBox)){	//Check if our selection box is active and has not been cleaned out by X entry
+			RemoveChild(selectionBox);											//If so, delete selection box
 		}
-		selectionBoxActive = false;
+		selectionBoxActive = false;												//Set our active flag to false
 	}
 	public override void _Ready()
 	{
-		canLeave = false;
-		GetNode<Timer>("SpawnTimer").Start();
+		canLeave = false;						//Set delay before player can change scenes again to avoid unpredictable spawns
+		GetNode<Timer>("SpawnTimer").Start();	//Start delay timer
 		
 		tree = GetTree();									//Get static reference to current tree that will be used to transition out of scene later
 		houseParty = GetNode<Node2D>("Party");				//Get reference to Party node in house scene

@@ -4,10 +4,10 @@ using System;
 public partial class LevelObject : StaticBody2D			//Generic class for objects in level that detect when players enter/leave nearby area
 {
 	[Signal]
-	public delegate void NearbyEventHandler(Node2D body);
+	public delegate void NearbyEventHandler(Node2D body);		//Event handler for approaching object. Body refers to whatever is entering the object's surrounding area
 	
 	[Signal]
-	public delegate void NotNearbyEventHandler(Node2D body);
+	public delegate void NotNearbyEventHandler(Node2D body);	//Event handler for walking away from object. Body refers to whatever is entering the object's surrounding area
 	
 	private void OnSurroundingAreaEntered(Node2D body)
 	{	
@@ -15,7 +15,7 @@ public partial class LevelObject : StaticBody2D			//Generic class for objects in
 	}
 	private void OnSurroundingBodyExited(Node2D body)
 	{	
-		EmitSignal(SignalName.NotNearby, body);
+		EmitSignal(SignalName.NotNearby, body);		
 	}
 	public override void _Ready()
 	{

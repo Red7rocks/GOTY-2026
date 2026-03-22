@@ -3,8 +3,8 @@ using System;
 
 public partial class Level : Node2D
 {
-	private SceneTree tree;
-	bool canLeave = false;
+	private SceneTree tree;		//Private reference to the current tree
+	bool canLeave = false;	//Flag used for setting delay between allowing player to change scenes, to prevent unpredictable spawns
 
 	PackedScene saloonScene = GD.Load<PackedScene>("res://Scenes/Buildings/saloon.tscn");
 	PackedScene badguyScene = GD.Load<PackedScene>("res://Scenes/Enemies/bad_guy.tscn");
@@ -16,11 +16,11 @@ public partial class Level : Node2D
 	Node2D levelEnemies;	//Container that will spawn all enemies in the level
 
 	private void notNearbyBuilding(Node2D body){
-		if(body != Global.Party.getCharacter(0)) return;
+		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		//Remove level entry prompt, once prompt is implemented
 	}
 	private void nearbyEnemy(Node2D body){		
-		if(body != Global.Party.getCharacter(0)) return;
+		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		CallDeferred(nameof(DeferredEnterBattle));		//Call deferred to allow godot to unload current scene
 		}
 		private void DeferredEnterBattle()
@@ -33,7 +33,7 @@ public partial class Level : Node2D
 	private void nearbyBuilding(Node2D body){
 		//Need to Prompt player if they want to enter here
 		//if they do, change scene
-		if(body != Global.Party.getCharacter(0)) return;
+		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		CallDeferred(nameof(DeferredEnterBuilding));	//Call deferred to allow godot to unload current scene
 		}
 		private void DeferredEnterBuilding()
