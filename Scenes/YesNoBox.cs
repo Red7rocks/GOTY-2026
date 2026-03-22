@@ -7,6 +7,7 @@ public partial class YesNoBox : Node2D
 	bool canLeave = true;
 	AnimatedSprite2D selectionArrow;
 	PackedScene levelScene = ResourceLoader.Load<PackedScene>("res://Scenes/World/level.tscn");	
+	PackedScene targetScene;
 
 	public void moveArrowLeft(){
 		selectionArrow.Position = new Vector2(-50, -40);	//Set arrow to left position, which corresponds to the green check mark
@@ -16,12 +17,14 @@ public partial class YesNoBox : Node2D
 		selectionArrow.Position = new Vector2(50, -40);		//Set arrow to right position, which corresponds to the red X
 		canLeave = false;									//Delete YesNoBox if enter is pressed
 	}
+	public void setTargetScene(PackedScene scene){
+		targetScene = scene;
+	}
 	public override void _Ready()
 	{
 		tree = GetTree();		//Give scene reference to itself
 		selectionArrow = GetNode<AnimatedSprite2D>("SelectionArrow");	
 		selectionArrow.Position = new Vector2(-50, -40);	//Set initial position of selection arrow to green check mark
-		 
 	}
 	public override void _Input(InputEvent @event)
 	{
@@ -36,7 +39,7 @@ public partial class YesNoBox : Node2D
 		if (@event.IsActionPressed("enter") && canLeave)	//If enter is pressed and arrow is over green check mark
 		{
 			Global.Party.AddPlayersToScene(Global.Instance);	//Add players back to scene transition node
-			tree.ChangeSceneToPacked(levelScene);				//Change back to overworld
+			tree.ChangeSceneToPacked(targetScene);				//Change back to overworld
 		}
 		if (@event.IsActionPressed("enter") && !canLeave)	//If enter is pressed and arrow is over red X
 		{

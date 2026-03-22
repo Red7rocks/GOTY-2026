@@ -12,7 +12,7 @@ public partial class House : Node2D
 
 	Node2D houseParty;		//Node referring to our player party
 	Node2D houseFurniture;	//Node to add all furniture in the shop to. need to add assets for shelves/goods/etc.
-	Node2D selectionBox;	//Selection box that will get addded/interacted with whenever the door is approached
+	YesNoBox selectionBox;	//Selection box that will get addded/interacted with whenever the door is approached
 
 
 	private void OnSpawnTimerTimeout(){
@@ -20,12 +20,13 @@ public partial class House : Node2D
 	}
 	private void nearbyDoor(Node2D body){
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
-		CallDeferred(nameof(DeferredEnterDoor));			//Calling deferred allows godot to clean up script in memory
+		CallDeferred(nameof(DeferredEnterDoor), body);			//Calling deferred allows godot to clean up script in memory
 		}
-		private void DeferredEnterDoor()
+		private void DeferredEnterDoor(Node2D body)
 		{
-			selectionBox = selectionBoxScene.Instantiate<Node2D>();									//Create a prompt to ask the player if they want to leave
-			selectionBox.Position =  GetNode<Node2D>("Door").Position + new Vector2(200, -100);		//Set this prompt slightly offset from the door
+			selectionBox = selectionBoxScene.Instantiate<YesNoBox>();									//Create a prompt to ask the player if they want to leave
+			selectionBox.Position =  body.Position + new Vector2(200, -100);		//Set this prompt slightly offset from the door
+			selectionBox.setTargetScene(levelScene);
 			AddChild(selectionBox);																	//Add the prompt to the scene
 			selectionBoxActive = true;																//Set flag stating prompt is currently live in the scene
 	}
