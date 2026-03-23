@@ -11,7 +11,7 @@ public partial class Level : Node2D
 	PackedScene badguyScene = GD.Load<PackedScene>("res://Scenes/Enemies/bad_guy.tscn");
 	PackedScene battleScene = GD.Load<PackedScene>("res://Scenes/Battle/battle.tscn");
 	PackedScene buildingScene = GD.Load<PackedScene>("res://Scenes/Buildings/house.tscn");
-	PackedScene selectionBoxScene = GD.Load<PackedScene>("res://Scenes/yes_no_box.tscn");
+	PackedScene selectionBoxScene = GD.Load<PackedScene>("res://Scenes/UI/yes_no_box.tscn");
 
 	Node2D levelParty;		//Container that will spawn all characters in level
 	Node2D levelBuildings;	//Container that will spawn all buildings in the level

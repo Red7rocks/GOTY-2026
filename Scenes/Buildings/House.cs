@@ -8,7 +8,7 @@ public partial class House : Node2D
 	bool selectionBoxActive = false;	//Flag used for checking if selection box is currently live as a child of the House scene
 
 	PackedScene levelScene = GD.Load<PackedScene>("res://Scenes/World/level.tscn");
-	PackedScene selectionBoxScene = GD.Load<PackedScene>("res://Scenes/yes_no_box.tscn");
+	PackedScene selectionBoxScene = GD.Load<PackedScene>("res://Scenes/UI/yes_no_box.tscn");
 
 	Node2D houseParty;		//Node referring to our player party
 	Node2D houseFurniture;	//Node to add all furniture in the shop to. need to add assets for shelves/goods/etc.
