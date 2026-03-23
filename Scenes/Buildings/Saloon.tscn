@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="2_0oo71"]
 [ext_resource type="Texture2D" uid="uid://b7uncpxg54gim" path="res://Sprites/Buildings/saloon.png" id="2_hu4dj"]
 
-[sub_resource type="Resource" id="Resource_4ktcy"]
+[sub_resource type="Resource" id="Resource_hu4dj"]
 script = ExtResource("2_0oo71")
 metadata/_custom_type_script = "uid://do7m2tymrnwaj"
 
@@ -54,7 +54,7 @@ height = 290.0
 [node name="Saloon" type="StaticBody2D" unique_id=1500095230]
 collision_layer = 2
 script = ExtResource("1_hgdn4")
-Data = SubResource("Resource_4ktcy")
+Data = SubResource("Resource_hu4dj")
 
 [node name="AnimationSprite2D" type="AnimatedSprite2D" parent="." unique_id=1644664519]
 scale = Vector2(7, 7)

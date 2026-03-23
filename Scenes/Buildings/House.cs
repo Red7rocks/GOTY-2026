@@ -18,7 +18,7 @@ public partial class House : Node2D
 		canLeave = true;		//Wait 1 second before allowing players to enter battle so game can first set party position properly
 	}
 	private void nearbyDoor(Node2D body){
-		if (!IsInstanceValid(this)) return; 
+		if (!IsInstanceValid(this)) return; 				//Check if door actually exists, and is not a remnant in memory
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		CallDeferred(nameof(DeferredEnterDoor), body);			//Calling deferred allows godot to clean up script in memory
 		}
@@ -30,7 +30,7 @@ public partial class House : Node2D
 			selectionBoxActive = true;													//Set flag stating prompt is currently live in the scene
 	}
 	private void awayFromDoor(Node2D body){
-		if (!IsInstanceValid(this)) return;
+		if (!IsInstanceValid(this)) return;					//Prevents multiple doors from being deleted
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		if(selectionBoxActive && GodotObject.IsInstanceValid(selectionBox)){	//Check if our selection box is active and has not been cleaned out by X entry
 			CallDeferred(nameof(DeferredRemoveSelectionBox));;											//If so, delete selection box

@@ -19,6 +19,7 @@ public partial class Level : Node2D
 	YesNoBox selectionBox;	//Selection box that will get addded/interacted with whenever the Building is approached
 
 	private void nearbyEnemy(Node2D body){		
+		if (!IsInstanceValid(this)) return; 				//Prevents function from firing repeatedly
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		CallDeferred(nameof(DeferredEnterBattle));		//Call deferred to allow godot to unload current scene
 		}
@@ -31,6 +32,8 @@ public partial class Level : Node2D
 	}
 
 	private void nearbyBuilding(Node2D body){
+		if (!IsInstanceValid(this)) return; 				//Prevents function from firing repeatedly
+		
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		CallDeferred(nameof(DeferredEnterBuilding), body);	//Call deferred to allow godot to unload current scene
 		}
@@ -44,14 +47,14 @@ public partial class Level : Node2D
 	}
 	
 	private void notNearbyBuilding(Node2D body){
+		if (!IsInstanceValid(this)) return; 				//Prevents function from firing repeatedly
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		if(selectionBoxActive && GodotObject.IsInstanceValid(selectionBox)){	//Check if our selection box is active and has not been cleaned out by X entry
 			selectionBox.QueueFree();
 			selectionBox = null;	//Delete selection box
 		}
-		selectionBoxActive = false;												//Set our active flag to false
+		selectionBoxActive = false;
 	}
-
 	private void addBuilding(LevelObjectNode levOb, Vector2 position){
 		levOb.Position = position;				//Set Building position
 		levOb.Data.Nearby += nearbyBuilding;			//Attach signal to trigger when character approaches building
@@ -60,7 +63,7 @@ public partial class Level : Node2D
 	}
 	private void addEnemy(LevelObjectNode levOb, Vector2 position){
 		levOb.Position = position;				//Set Enemy position
-		levOb.Data.Nearby += nearbyEnemy;			//Attach signal to trigger when character approaches enemy
+		levOb.Data.Nearby += nearbyEnemy;		//Attach signal to trigger when character approaches enemy
 		levelEnemies.AddChild(levOb);			//Add Enemy to level
 	}
 	private void OnSpawnTimerTimeout(){
@@ -78,8 +81,6 @@ public partial class Level : Node2D
 
 		LevelObjectNode saloon = saloonScene.Instantiate<LevelObjectNode>();	//create saloon object that can be added to the level
 		LevelObjectNode badguy = badguyScene.Instantiate<LevelObjectNode>();	//create badguy object that can be added to the level
-		saloon.Data = new LevelObject();
-		badguy.Data = new LevelObject();
 		Global.Party.setPartyPosition(Global.levelSpawn);
 		Global.Party.AddPlayersToScene(levelParty);
 
