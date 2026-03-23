@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="LevelObject" format=3 uid="uid://buripynfkadx3"]
+
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="1_kw23u"]
+
+[resource]
+script = ExtResource("1_kw23u")
+metadata/_custom_type_script = "uid://do7m2tymrnwaj"

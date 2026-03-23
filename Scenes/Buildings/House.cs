@@ -20,7 +20,7 @@ public partial class House : Node2D
 	private void nearbyDoor(Node2D body){
 		if (!IsInstanceValid(this)) return; 				//Check if door actually exists, and is not a remnant in memory
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
-		CallDeferred(nameof(DeferredEnterDoor), body);			//Calling deferred allows godot to clean up script in memory
+		CallDeferred(nameof(DeferredEnterDoor), body);		//Calling deferred allows godot to clean up script in memory
 		}
 		private void DeferredEnterDoor(Node2D body)
 		{
@@ -39,13 +39,11 @@ public partial class House : Node2D
 	private void DeferredRemoveSelectionBox(){
 		selectionBoxActive = false;	//Set our active flag to false
 		if(GodotObject.IsInstanceValid(selectionBox)){
-			RemoveChild(selectionBox);
-			selectionBox.QueueFree();
-			selectionBox = null;
+			RemoveChild(selectionBox);		//remove selection box from scene at the leisure of the engine
+			selectionBox.QueueFree();		//Delete selection box object
+			selectionBox = null;			//Set variable to null
 		}
-
-	}												
-
+	}
 	public override void _Ready()
 	{
 		canLeave = false;						//Set delay before player can change scenes again to avoid unpredictable spawns

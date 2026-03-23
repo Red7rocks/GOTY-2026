@@ -30,7 +30,6 @@ public partial class Level : Node2D
 				tree.ChangeSceneToPacked(battleScene);				//change to battle scene
 			}
 	}
-
 	private void nearbyBuilding(Node2D body){
 		if (!IsInstanceValid(this)) return; 				//Prevents function from firing repeatedly
 		
@@ -45,7 +44,6 @@ public partial class Level : Node2D
 			AddChild(selectionBox);																	//Add the prompt to the scene
 			selectionBoxActive = true;																//Set flag stating prompt is currently live in the scene
 	}
-	
 	private void notNearbyBuilding(Node2D body){
 		if (!IsInstanceValid(this)) return; 				//Prevents function from firing repeatedly
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters

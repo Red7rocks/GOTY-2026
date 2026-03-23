@@ -52,8 +52,7 @@ public partial class YesNoBox : Node2D
 		if (@event.IsActionPressed("enter") && canLeave)	//If enter is pressed and arrow is over green check mark
 		{
 			Global.Party.AddPlayersToScene(Global.Instance);	//Add players back to scene transition node
-			tree.CallDeferred("change_scene_to_packed", targetScene);
-			//tree.ChangeSceneToPacked(targetScene);				//Change back to overworld
+			tree.CallDeferred("change_scene_to_packed", targetScene);	//Change back to overworld
 		}
 		if (@event.IsActionPressed("enter") && !canLeave)	//If enter is pressed and arrow is over red X
 		{

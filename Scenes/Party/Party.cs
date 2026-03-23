@@ -23,7 +23,6 @@ public partial class Party : Node
 		}
 		Vector2 direction = Input.GetVector("a", "d", "w", "s");	//Grab input from WASD keys 
 		members[0].Velocity = direction * playerSpeed;				//Set leader movement to whatever input was read
-		//members[0].MoveAndCollide(members[0].Velocity);
 		members[0].MoveAndSlide();									//Actually move the player
 	}
 	public void recordPosition()
