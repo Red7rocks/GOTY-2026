@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dtwtstidvp5ff"]
 
 [ext_resource type="Script" uid="uid://cj5xw6jkg58jg" path="res://Scenes/World/LevelObjectNode.cs" id="1_2upl2"]
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="1_nlxtp"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="1_nlxtp"]
 [ext_resource type="Texture2D" uid="uid://dmtju20kydv8o" path="res://Sprites/Furniture/leftdoor.png" id="1_p0e35"]
 [ext_resource type="Texture2D" uid="uid://c6lixq62cnlt7" path="res://Sprites/Furniture/RightDoor.png" id="2_fahql"]
 

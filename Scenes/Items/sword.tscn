@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1s3050jmo3bc"]
 
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="1_itn8i"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="1_itn8i"]
 [ext_resource type="Texture2D" uid="uid://dwtpbh3o82qa0" path="res://Sprites/Items/sword.png" id="1_kpc47"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itn8i"]

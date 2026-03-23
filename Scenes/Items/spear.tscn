@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://1rm5yn8cy8bd"]
 
 [ext_resource type="Texture2D" uid="uid://cc7atu10ib8bx" path="res://Sprites/Items/Spear.png" id="1_lcldk"]
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="2_1x3f5"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="2_1x3f5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1x3f5"]
 radius = 1.4142137

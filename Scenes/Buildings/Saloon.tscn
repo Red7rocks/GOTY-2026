@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cb6i2csoswscr"]
 
 [ext_resource type="Script" uid="uid://cj5xw6jkg58jg" path="res://Scenes/World/LevelObjectNode.cs" id="1_hgdn4"]
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="2_0oo71"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="2_0oo71"]
 [ext_resource type="Texture2D" uid="uid://b7uncpxg54gim" path="res://Sprites/Buildings/saloon.png" id="2_hu4dj"]
 
 [sub_resource type="Resource" id="Resource_hu4dj"]

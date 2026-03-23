@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c13trf4xsnphs"]
 
 [ext_resource type="Script" uid="uid://cj5xw6jkg58jg" path="res://Scenes/World/LevelObjectNode.cs" id="1_ed4ar"]
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="1_xratm"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="1_xratm"]
 [ext_resource type="Texture2D" uid="uid://cqcgg5pgup6g" path="res://Sprites/Characters/badguy.png" id="2_r7euu"]
 
 [sub_resource type="Resource" id="Resource_ntg0p"]

@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class LevelObject : Resource			//Generic class for objects in level that detect when players enter/leave nearby area
+public partial class LevelObjectResource : Resource			//Generic class for objects in level that detect when players enter/leave nearby area
 {
 	Area2D surroundingArea;
 	AnimatedSprite2D overworldSprite;

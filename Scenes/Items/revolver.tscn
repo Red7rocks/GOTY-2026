@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8igstjnfqopd"]
 
 [ext_resource type="Texture2D" uid="uid://by0aglc8u3srg" path="res://Sprites/Items/revolver.png" id="1_8heyh"]
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="2_7lp6u"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="2_7lp6u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7lp6u"]
 height = 38.0

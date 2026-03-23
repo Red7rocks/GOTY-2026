@@ -6,7 +6,7 @@ public partial class LevelObjectNode : StaticBody2D	//This is the template class
 													//Resources are used for storing data, where as class handlers such as this one are used for physics functions.
 	
 	[Export]										
-	public LevelObject Data;					//Build off of our LevelObject resource
+	public LevelObjectResource Data;					//Build off of our LevelObject resource
 	
 	private bool playerNearby = false;			//Keep track of if player is in the vicinity
 	private Node2D currentBody;					//Keep track of which object is nearby (typically party leader)
