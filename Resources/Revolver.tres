@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelObject" format=3 uid="uid://buripynfkadx3"]
+[gd_resource type="Resource" script_class="LevelObjectResource" format=3 uid="uid://buripynfkadx3"]
 
 [ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="1_kw23u"]
 

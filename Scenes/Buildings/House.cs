@@ -29,20 +29,21 @@ public partial class House : Node2D
 			AddChild(selectionBox);														//Add the prompt to the scene
 			selectionBoxActive = true;													//Set flag stating prompt is currently live in the scene
 	}
-	private void awayFromDoor(Node2D body){
+	private void awayFromDoor(Node2D body)
+	{
 		if (!IsInstanceValid(this)) return;					//Prevents multiple doors from being deleted
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		if(selectionBoxActive && GodotObject.IsInstanceValid(selectionBox)){	//Check if our selection box is active and has not been cleaned out by X entry
 			CallDeferred(nameof(DeferredRemoveSelectionBox));;											//If so, delete selection box
 		}
-	}
-	private void DeferredRemoveSelectionBox(){
-		selectionBoxActive = false;	//Set our active flag to false
-		if(GodotObject.IsInstanceValid(selectionBox)){
-			RemoveChild(selectionBox);		//remove selection box from scene at the leisure of the engine
-			selectionBox.QueueFree();		//Delete selection box object
-			selectionBox = null;			//Set variable to null
 		}
+		private void DeferredRemoveSelectionBox(){
+			selectionBoxActive = false;	//Set our active flag to false
+			if(GodotObject.IsInstanceValid(selectionBox)){
+				RemoveChild(selectionBox);		//remove selection box from scene at the leisure of the engine
+				selectionBox.QueueFree();		//Delete selection box object
+				selectionBox = null;			//Set variable to null
+			}
 	}
 	public override void _Ready()
 	{
