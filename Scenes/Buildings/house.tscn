@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://jtnow6al3foj" path="res://Scenes/Buildings/shopkeeper.tscn" id="2_i6h3i"]
 [ext_resource type="Texture2D" uid="uid://w1puqwtssm6t" path="res://Sprites/Tiles/walltiles.png" id="4_0vbyw"]
 [ext_resource type="PackedScene" uid="uid://dtwtstidvp5ff" path="res://Scenes/Buildings/door.tscn" id="5_6isqf"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="5_mts68"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6h3i"]
 texture = ExtResource("1_siy1q")
@@ -46,6 +47,10 @@ texture = ExtResource("4_0vbyw")
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_6isqf")
 
+[sub_resource type="Resource" id="Resource_vredm"]
+script = ExtResource("5_mts68")
+metadata/_custom_type_script = "uid://do7m2tymrnwaj"
+
 [node name="House" type="Node2D" unique_id=148218352]
 script = ExtResource("1_d4ch1")
 
@@ -68,6 +73,7 @@ tile_set = SubResource("TileSet_mts68")
 
 [node name="Door" parent="." unique_id=586999505 instance=ExtResource("5_6isqf")]
 position = Vector2(512, 811)
+Data = SubResource("Resource_vredm")
 
 [node name="Shopkeeper" parent="." unique_id=739375244 instance=ExtResource("2_i6h3i")]
 position = Vector2(806, 245)

@@ -14,30 +14,38 @@ public partial class House : Node2D
 	Node2D houseFurniture;	//Node to add all furniture in the shop to. need to add assets for shelves/goods/etc.
 	YesNoBox selectionBox;	//Selection box that will get addded/interacted with whenever the door is approached
 
-
-	private void OnSpawnTimerTimeout(){
+	public void OnSpawnTimerTimeout(){
 		canLeave = true;		//Wait 1 second before allowing players to enter battle so game can first set party position properly
 	}
 	private void nearbyDoor(Node2D body){
+		if (!IsInstanceValid(this)) return; 
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		CallDeferred(nameof(DeferredEnterDoor), body);			//Calling deferred allows godot to clean up script in memory
 		}
 		private void DeferredEnterDoor(Node2D body)
 		{
 			selectionBox = selectionBoxScene.Instantiate<YesNoBox>();					//Create a prompt to ask the player if they want to leave
-			selectionBox.setPrompt("leave building?");
-			selectionBox.Position =  body.Position + new Vector2(200, -100);			//Set this prompt slightly offset from the door
-			selectionBox.setTargetScene(levelScene);
+			selectionBox.setupSelectionBox("leave building?", body.Position, levelScene);
 			AddChild(selectionBox);														//Add the prompt to the scene
 			selectionBoxActive = true;													//Set flag stating prompt is currently live in the scene
 	}
 	private void awayFromDoor(Node2D body){
+		if (!IsInstanceValid(this)) return;
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		if(selectionBoxActive && GodotObject.IsInstanceValid(selectionBox)){	//Check if our selection box is active and has not been cleaned out by X entry
-			RemoveChild(selectionBox);											//If so, delete selection box
+			CallDeferred(nameof(DeferredRemoveSelectionBox));;											//If so, delete selection box
 		}
-		selectionBoxActive = false;												//Set our active flag to false
 	}
+	private void DeferredRemoveSelectionBox(){
+		selectionBoxActive = false;	//Set our active flag to false
+		if(GodotObject.IsInstanceValid(selectionBox)){
+			RemoveChild(selectionBox);
+			selectionBox.QueueFree();
+			selectionBox = null;
+		}
+
+	}												
+
 	public override void _Ready()
 	{
 		canLeave = false;						//Set delay before player can change scenes again to avoid unpredictable spawns
@@ -50,8 +58,8 @@ public partial class House : Node2D
 		Global.Party.setPartyPosition(Global.levelSpawn);																						//Need to create seperate variable for shop spawn position
 		Global.Party.AddPlayersToScene(houseParty);			//Add players to the house
 
-		GetNode<LevelObject>("Door").Nearby += nearbyDoor;	//Connect house door scene nearby signal to nearbyDoor function
-		GetNode<LevelObject>("Door").NotNearby += awayFromDoor;	//Connect house door scene nearby signal to nearbyDoor function
+		GetNode<LevelObjectNode>("Door").Data.Nearby += nearbyDoor;	//Connect house door scene nearby signal to nearbyDoor function
+		GetNode<LevelObjectNode>("Door").Data.NotNearby += awayFromDoor;	//Connect house door scene nearby signal to nearbyDoor function
 	}
 	public override void _PhysicsProcess(double delta)
 	{
