@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://dtwtstidvp5ff"]
 
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="1_nlxtp"]
+[ext_resource type="Script" uid="uid://cj5xw6jkg58jg" path="res://Scenes/World/LevelObjectNode.cs" id="1_2upl2"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="1_nlxtp"]
 [ext_resource type="Texture2D" uid="uid://dmtju20kydv8o" path="res://Sprites/Furniture/leftdoor.png" id="1_p0e35"]
 [ext_resource type="Texture2D" uid="uid://c6lixq62cnlt7" path="res://Sprites/Furniture/RightDoor.png" id="2_fahql"]
+
+[sub_resource type="Resource" id="Resource_8uqju"]
+script = ExtResource("1_nlxtp")
+metadata/_custom_type_script = "uid://do7m2tymrnwaj"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ab4ky"]
 atlas = ExtResource("1_p0e35")
@@ -85,7 +90,8 @@ height = 210.0
 
 [node name="Door" type="StaticBody2D" unique_id=586999505]
 collision_layer = 2
-script = ExtResource("1_nlxtp")
+script = ExtResource("1_2upl2")
+Data = SubResource("Resource_8uqju")
 
 [node name="leftDoor" type="AnimatedSprite2D" parent="." unique_id=1279962932]
 position = Vector2(-32, -10.999997)

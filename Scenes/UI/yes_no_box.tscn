@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://opw58r4aiwin"]
 
-[ext_resource type="Script" uid="uid://cp18vshr18xym" path="res://Scenes/YesNoBox.cs" id="1_afplh"]
+[ext_resource type="Script" uid="uid://cp18vshr18xym" path="res://Scenes/UI/YesNoBox.cs" id="1_afplh"]
 [ext_resource type="Texture2D" uid="uid://wvbt1ojiwje5" path="res://Sprites/Tiles/DialogueWindow1.png" id="1_e2cji"]
 [ext_resource type="Texture2D" uid="uid://egb0qmlkflaa" path="res://Sprites/Tiles/YesNoButtons.png" id="2_r22p4"]
 [ext_resource type="Texture2D" uid="uid://bagxvqxxppr3j" path="res://Sprites/Tiles/SelectionArrow.png" id="4_or1k7"]

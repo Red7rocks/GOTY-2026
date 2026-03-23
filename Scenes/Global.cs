@@ -12,6 +12,7 @@ public partial class Global : Node		//This script is set to auto load in project
 	public Party party;									//dynamic party variable for containing all current party members
 	public static Party Party { get; private set; }		//Static reference to party that can be accessed across entire project
 	public static Vector2 levelSpawn = new Vector2(100, 100);
+	
 	public override void _Ready()
 	{
 		Instance = this;			//Create a new global instance on game launch

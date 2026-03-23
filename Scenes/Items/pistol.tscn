@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cu86q8cc7ylkb"]
 
-[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObject.cs" id="1_77vle"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="1_77vle"]
 [ext_resource type="Texture2D" uid="uid://6ltsqjkhelny" path="res://Sprites/Items/pistol.png" id="2_77vle"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77vle"]

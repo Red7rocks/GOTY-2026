@@ -11,15 +11,15 @@ public partial class Level : Node2D
 	PackedScene badguyScene = GD.Load<PackedScene>("res://Scenes/Enemies/bad_guy.tscn");
 	PackedScene battleScene = GD.Load<PackedScene>("res://Scenes/Battle/battle.tscn");
 	PackedScene buildingScene = GD.Load<PackedScene>("res://Scenes/Buildings/house.tscn");
-	PackedScene selectionBoxScene = GD.Load<PackedScene>("res://Scenes/yes_no_box.tscn");
+	PackedScene selectionBoxScene = GD.Load<PackedScene>("res://Scenes/UI/yes_no_box.tscn");
 
 	Node2D levelParty;		//Container that will spawn all characters in level
 	Node2D levelBuildings;	//Container that will spawn all buildings in the level
 	Node2D levelEnemies;	//Container that will spawn all enemies in the level
 	YesNoBox selectionBox;	//Selection box that will get addded/interacted with whenever the Building is approached
 
-
 	private void nearbyEnemy(Node2D body){		
+		if (!IsInstanceValid(this)) return; 				//Prevents function from firing repeatedly
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		CallDeferred(nameof(DeferredEnterBattle));		//Call deferred to allow godot to unload current scene
 		}
@@ -30,8 +30,9 @@ public partial class Level : Node2D
 				tree.ChangeSceneToPacked(battleScene);				//change to battle scene
 			}
 	}
-
 	private void nearbyBuilding(Node2D body){
+		if (!IsInstanceValid(this)) return; 				//Prevents function from firing repeatedly
+		
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		CallDeferred(nameof(DeferredEnterBuilding), body);	//Call deferred to allow godot to unload current scene
 		}
@@ -39,31 +40,28 @@ public partial class Level : Node2D
 		{
 			if (selectionBoxActive && IsInstanceValid(selectionBox)) return;
 			selectionBox = selectionBoxScene.Instantiate<YesNoBox>();									//Create a prompt to ask the player if they want to leave
-			selectionBox.setPrompt("enter building?");
-			selectionBox.Position =  body.Position + new Vector2(200, -100);		//Set this prompt slightly offset from the door
-			selectionBox.setTargetScene(buildingScene);
+			selectionBox.setupSelectionBox("enter building?", body.Position, buildingScene);
 			AddChild(selectionBox);																	//Add the prompt to the scene
 			selectionBoxActive = true;																//Set flag stating prompt is currently live in the scene
 	}
-	
 	private void notNearbyBuilding(Node2D body){
+		if (!IsInstanceValid(this)) return; 				//Prevents function from firing repeatedly
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
 		if(selectionBoxActive && GodotObject.IsInstanceValid(selectionBox)){	//Check if our selection box is active and has not been cleaned out by X entry
 			selectionBox.QueueFree();
 			selectionBox = null;	//Delete selection box
 		}
-		selectionBoxActive = false;												//Set our active flag to false
+		selectionBoxActive = false;
 	}
-
-	private void addBuilding(LevelObject levOb, Vector2 position){
+	private void addBuilding(LevelObjectNode levOb, Vector2 position){
 		levOb.Position = position;				//Set Building position
-		levOb.Nearby += nearbyBuilding;			//Attach signal to trigger when character approaches building
-		levOb.NotNearby += notNearbyBuilding;	//Attach signal to trigger when character walks away from building
+		levOb.Data.Nearby += nearbyBuilding;			//Attach signal to trigger when character approaches building
+		levOb.Data.NotNearby += notNearbyBuilding;	//Attach signal to trigger when character walks away from building
 		levelBuildings.AddChild(levOb);			//Add Building to the level
 	}
-	private void addEnemy(LevelObject levOb, Vector2 position){
+	private void addEnemy(LevelObjectNode levOb, Vector2 position){
 		levOb.Position = position;				//Set Enemy position
-		levOb.Nearby += nearbyEnemy;			//Attach signal to trigger when character approaches enemy
+		levOb.Data.Nearby += nearbyEnemy;		//Attach signal to trigger when character approaches enemy
 		levelEnemies.AddChild(levOb);			//Add Enemy to level
 	}
 	private void OnSpawnTimerTimeout(){
@@ -79,9 +77,8 @@ public partial class Level : Node2D
 		levelBuildings = GetNode<Node2D>("Buildings");		//Get reference to Buildings node in level scene
 		levelEnemies = GetNode<Node2D>("Enemies");			//Get reference to Enemies node in level scene
 
-		LevelObject saloon = saloonScene.Instantiate<LevelObject>();	//create saloon object that can be added to the level
-		LevelObject badguy = badguyScene.Instantiate<LevelObject>();	//create badguy object that can be added to the level
-
+		LevelObjectNode saloon = saloonScene.Instantiate<LevelObjectNode>();	//create saloon object that can be added to the level
+		LevelObjectNode badguy = badguyScene.Instantiate<LevelObjectNode>();	//create badguy object that can be added to the level
 		Global.Party.setPartyPosition(Global.levelSpawn);
 		Global.Party.AddPlayersToScene(levelParty);
 
