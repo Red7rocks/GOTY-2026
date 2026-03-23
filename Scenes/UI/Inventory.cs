@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-
+																		//WIP
 public partial class ItemData : Resource
 {
 	[Export] public string Name { get; set; }

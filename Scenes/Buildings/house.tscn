@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbdcx584qbkb1" path="res://Scenes/Buildings/House.cs" id="1_d4ch1"]
 [ext_resource type="Texture2D" uid="uid://d6gc1sp78dje" path="res://Sprites/Tiles/planks.png" id="1_siy1q"]
-[ext_resource type="PackedScene" uid="uid://jtnow6al3foj" path="res://Scenes/Buildings/shopkeeper.tscn" id="2_i6h3i"]
+[ext_resource type="PackedScene" uid="uid://jtnow6al3foj" path="res://Scenes/NPCs/shopkeeper.tscn" id="2_i6h3i"]
 [ext_resource type="Texture2D" uid="uid://w1puqwtssm6t" path="res://Sprites/Tiles/walltiles.png" id="4_0vbyw"]
 [ext_resource type="PackedScene" uid="uid://dtwtstidvp5ff" path="res://Scenes/Buildings/door.tscn" id="5_6isqf"]
 [ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="5_mts68"]
