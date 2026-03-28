@@ -75,10 +75,10 @@ tile_set = SubResource("TileSet_mts68")
 position = Vector2(512, 811)
 Data = SubResource("Resource_vredm")
 
+[node name="Party" type="Node2D" parent="." unique_id=1647339645]
+
 [node name="Shopkeeper" parent="." unique_id=739375244 instance=ExtResource("2_i6h3i")]
 position = Vector2(806, 245)
-
-[node name="Party" type="Node2D" parent="." unique_id=1647339645]
 
 [node name="Furniture" type="Node2D" parent="." unique_id=1576073971]
 

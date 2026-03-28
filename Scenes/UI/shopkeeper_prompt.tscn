@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cqiyyaxabgxi2"]
+
+[ext_resource type="Script" uid="uid://4bhqv0oaewhm" path="res://Scenes/UI/ShopkeeperPrompt.cs" id="1_lmb15"]
+[ext_resource type="Texture2D" uid="uid://bhq0wd1cpoi2t" path="res://Sprites/Tiles/DialogueWindow2.png" id="1_wv6gj"]
+
+[node name="shopkeeperPrompt" type="Node2D" unique_id=981888751]
+script = ExtResource("1_lmb15")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1184687861]
+scale = Vector2(5, 5)
+texture = ExtResource("1_wv6gj")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=677606266]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 145.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Hello! How can I help you?[/center]"

@@ -7,7 +7,6 @@ public partial class YesNoBox : Node2D
 	bool canLeave = true;
 	bool isBoxActive = false;
 	AnimatedSprite2D selectionArrow;
-	PackedScene levelScene = ResourceLoader.Load<PackedScene>("res://Scenes/World/level.tscn");	
 	PackedScene targetScene;
 
 	public bool isActive(){

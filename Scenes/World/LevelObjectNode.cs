@@ -4,7 +4,6 @@ using System;
 public partial class LevelObjectNode : StaticBody2D	//This is the template class for all objects to spawn in overworld scenes
 {													//Currently provides signals for approaching and walking away from said object
 													//Resources are used for storing data, where as class handlers such as this one are used for physics functions.
-	
 	[Export]										
 	public LevelObjectResource Data;					//Build off of our LevelObject resource
 	
