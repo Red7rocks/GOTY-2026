@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://jtnow6al3foj"]
 
 [ext_resource type="Texture2D" uid="uid://cq12l6b3itjlk" path="res://Sprites/Furniture/kiosk.png" id="1_10pcf"]
+[ext_resource type="Script" uid="uid://cj5xw6jkg58jg" path="res://Scenes/World/LevelObjectNode.cs" id="1_71lhl"]
 [ext_resource type="Texture2D" uid="uid://kkuxr3jty01t" path="res://Sprites/Characters/shopkeeper.png" id="1_hn4kv"]
+[ext_resource type="Script" uid="uid://do7m2tymrnwaj" path="res://Scenes/World/LevelObjectResource.cs" id="2_2w4vr"]
+
+[sub_resource type="Resource" id="Resource_bng06"]
+script = ExtResource("2_2w4vr")
+metadata/_custom_type_script = "uid://do7m2tymrnwaj"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3os3a"]
 atlas = ExtResource("1_hn4kv")
@@ -60,9 +66,18 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Shopkeeper" type="Node2D" unique_id=739375244]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w4vr"]
+size = Vector2(273, 300)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=906784144]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71lhl"]
+size = Vector2(127, 162)
+
+[node name="Shopkeeper" type="StaticBody2D" unique_id=1132060836]
+collision_layer = 2
+script = ExtResource("1_71lhl")
+Data = SubResource("Resource_bng06")
+
+[node name="ShopkeeperSprite" type="AnimatedSprite2D" parent="." unique_id=906784144]
 position = Vector2(0, -76)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8fp8t")
@@ -73,3 +88,13 @@ frame_progress = 0.5289501
 [node name="Kiosk" type="Sprite2D" parent="." unique_id=810690641]
 scale = Vector2(7, 7)
 texture = ExtResource("1_10pcf")
+
+[node name="SurroundingArea" type="Area2D" parent="." unique_id=1787006399]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SurroundingArea" unique_id=330601271]
+position = Vector2(-4.5, -31)
+shape = SubResource("RectangleShape2D_2w4vr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=360232055]
+position = Vector2(-0.5, -40)
+shape = SubResource("RectangleShape2D_71lhl")

@@ -6,13 +6,18 @@ public partial class House : Node2D
 	private SceneTree tree;		//Private reference to the current tree
 	bool canLeave = false;		//Flag used for setting delay between allowing player to change scenes, to prevent unpredictable spawns
 	bool selectionBoxActive = false;	//Flag used for checking if selection box is currently live as a child of the House scene
-
+	bool shopkeeperDialogueActive = false;
+	
 	PackedScene levelScene = GD.Load<PackedScene>("res://Scenes/World/level.tscn");
 	PackedScene selectionBoxScene = GD.Load<PackedScene>("res://Scenes/UI/yes_no_box.tscn");
+	PackedScene shopkeeperPromptScene = GD.Load<PackedScene>("res://Scenes/UI/shopkeeper_prompt.tscn");
+	PackedScene shelfScene = GD.Load<PackedScene>("res://Scenes/Buildings/shelf.tscn");
 
 	Node2D houseParty;		//Node referring to our player party
 	Node2D houseFurniture;	//Node to add all furniture in the shop to. need to add assets for shelves/goods/etc.
 	YesNoBox selectionBox;	//Selection box that will get addded/interacted with whenever the door is approached
+	ShopkeeperPrompt shopkeeperPrompt;
+	
 
 	public void OnSpawnTimerTimeout(){
 		canLeave = true;		//Wait 1 second before allowing players to enter battle so game can first set party position properly
@@ -20,6 +25,8 @@ public partial class House : Node2D
 	private void nearbyDoor(Node2D body){
 		if (!IsInstanceValid(this)) return; 				//Check if door actually exists, and is not a remnant in memory
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
+		GetNode<AnimatedSprite2D>("Door/leftDoor").Play();
+		GetNode<AnimatedSprite2D>("Door/rightDoor").Play();
 		CallDeferred(nameof(DeferredEnterDoor), body);		//Calling deferred allows godot to clean up script in memory
 		}
 		private void DeferredEnterDoor(Node2D body)
@@ -29,10 +36,11 @@ public partial class House : Node2D
 			AddChild(selectionBox);														//Add the prompt to the scene
 			selectionBoxActive = true;													//Set flag stating prompt is currently live in the scene
 	}
-	private void awayFromDoor(Node2D body)
-	{
+	private void awayFromDoor(Node2D body){
 		if (!IsInstanceValid(this)) return;					//Prevents multiple doors from being deleted
 		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
+		GetNode<AnimatedSprite2D>("Door/leftDoor").Stop();
+		GetNode<AnimatedSprite2D>("Door/rightDoor").Stop();
 		if(selectionBoxActive && GodotObject.IsInstanceValid(selectionBox)){	//Check if our selection box is active and has not been cleaned out by X entry
 			CallDeferred(nameof(DeferredRemoveSelectionBox));;											//If so, delete selection box
 		}
@@ -43,6 +51,34 @@ public partial class House : Node2D
 				RemoveChild(selectionBox);		//remove selection box from scene at the leisure of the engine
 				selectionBox.QueueFree();		//Delete selection box object
 				selectionBox = null;			//Set variable to null
+			}
+	}
+	private void nearbyShopkeeper(Node2D body){
+		if (!IsInstanceValid(this)) return; 				//Check if door actually exists, and is not a remnant in memory
+		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
+		CallDeferred(nameof(DeferredTalkToShopkeeper), body);		//Calling deferred allows godot to clean up script in memory
+		}
+		private void DeferredTalkToShopkeeper(Node2D body)
+		{
+			shopkeeperPrompt = shopkeeperPromptScene.Instantiate<ShopkeeperPrompt>();					//Create a prompt to ask the player if they want to leave
+			shopkeeperPrompt.setupShopkeeperPrompt(body.Position);
+			AddChild(shopkeeperPrompt);														//Add the prompt to the scene
+			shopkeeperDialogueActive = true;													//Set flag stating prompt is currently live in the scene
+	}
+	private void awayFromShopkeeper(Node2D body)
+	{
+		if (!IsInstanceValid(this)) return;					//Prevents multiple doors from being deleted
+		if(body != Global.Party.getCharacter(0)) return;	//We dont care about the movement of trailing characters
+		if(shopkeeperDialogueActive && GodotObject.IsInstanceValid(shopkeeperPrompt)){	//Check if our selection box is active and has not been cleaned out by X entry
+			CallDeferred(nameof(DeferredAwayFromShopkeeper));;											//If so, delete selection box
+		}
+		}
+		private void DeferredAwayFromShopkeeper(){
+			shopkeeperDialogueActive = false;	//Set our active flag to false
+			if(GodotObject.IsInstanceValid(shopkeeperPrompt)){
+				RemoveChild(shopkeeperPrompt);		//remove selection box from scene at the leisure of the engine
+				shopkeeperPrompt.QueueFree();		//Delete selection box object
+				shopkeeperPrompt = null;			//Set variable to null
 			}
 	}
 	public override void _Ready()
@@ -59,6 +95,9 @@ public partial class House : Node2D
 
 		GetNode<LevelObjectNode>("Door").Data.Nearby += nearbyDoor;	//Connect house door scene nearby signal to nearbyDoor function
 		GetNode<LevelObjectNode>("Door").Data.NotNearby += awayFromDoor;	//Connect house door scene nearby signal to nearbyDoor function
+		
+		GetNode<LevelObjectNode>("Shopkeeper").Data.Nearby += nearbyShopkeeper;	//Connect house door scene nearby signal to nearbyDoor function
+		GetNode<LevelObjectNode>("Shopkeeper").Data.NotNearby += awayFromShopkeeper;	//Connect house door scene nearby signal to nearbyDoor function
 	}
 	public override void _PhysicsProcess(double delta)
 	{
