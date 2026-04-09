@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c2xqdlfsjuuab"]
+
+[ext_resource type="Script" uid="uid://ofprqgbbq8iq" path="res://Scenes/UI/PressEnterPrompt.cs" id="1_rvipu"]
+
+[node name="EnterPrompt" type="Control" unique_id=114595514]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rvipu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=520911730]
+layout_mode = 0
+offset_left = -78.0
+offset_right = 78.0
+offset_bottom = 26.0
+text = "Press Enter to Chat"
+horizontal_alignment = 1

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://wvbt1ojiwje5" path="res://Sprites/Tiles/DialogueWindow1.png" id="1_e2cji"]
 [ext_resource type="Texture2D" uid="uid://egb0qmlkflaa" path="res://Sprites/Tiles/YesNoButtons.png" id="2_r22p4"]
 [ext_resource type="Texture2D" uid="uid://bagxvqxxppr3j" path="res://Sprites/Tiles/SelectionArrow.png" id="4_or1k7"]
+[ext_resource type="PackedScene" uid="uid://c2xqdlfsjuuab" path="res://Scenes/UI/pressEnterPrompt.tscn" id="5_vgtbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r22p4"]
 size = Vector2(76, 76)
@@ -95,15 +96,17 @@ autoplay = "default"
 frame_progress = 0.18217428
 
 [node name="PlayerPrompt" type="RichTextLabel" parent="." unique_id=1280642752]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
 offset_left = -120.0
 offset_top = -100.0
 offset_right = 120.0
 offset_bottom = -80.0
-grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="EnterPrompt" parent="." unique_id=114595514 instance=ExtResource("5_vgtbf")]
+offset_left = 1.0
+offset_top = 77.0
+offset_right = 1.0
+offset_bottom = 77.0
