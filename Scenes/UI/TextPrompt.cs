@@ -1,8 +1,11 @@
 using Godot;
 using System;
 
-public partial class PressEnterPrompt : Control
+public partial class TextPrompt : Control
 {
+	public string getPrompt(String action){
+		return "test";
+	}
 	public void FlashObject()
 	{
 		Tween _tween = CreateTween();	//Tweens are objects that allow gradual transitions between numbers

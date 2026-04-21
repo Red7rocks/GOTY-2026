@@ -7,7 +7,7 @@ public partial class Level : Node2D
 	bool canLeave = false;	//Flag used for setting delay between allowing player to change scenes, to prevent unpredictable spawns
 	bool selectionBoxActive = false;
 
-	PackedScene saloonScene = GD.Load<PackedScene>("res://Scenes/Buildings/saloon.tscn");
+	PackedScene saloonScene = GD.Load<PackedScene>("res://Scenes/Buildings/Saloon.tscn");
 	PackedScene badguyScene = GD.Load<PackedScene>("res://Scenes/Enemies/bad_guy.tscn");
 	PackedScene battleScene = GD.Load<PackedScene>("res://Scenes/Battle/battle.tscn");
 	PackedScene buildingScene = GD.Load<PackedScene>("res://Scenes/Buildings/house.tscn");

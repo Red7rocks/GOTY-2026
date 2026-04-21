@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://wvbt1ojiwje5" path="res://Sprites/Tiles/DialogueWindow1.png" id="1_e2cji"]
 [ext_resource type="Texture2D" uid="uid://egb0qmlkflaa" path="res://Sprites/Tiles/YesNoButtons.png" id="2_r22p4"]
 [ext_resource type="Texture2D" uid="uid://bagxvqxxppr3j" path="res://Sprites/Tiles/SelectionArrow.png" id="4_or1k7"]
-[ext_resource type="PackedScene" uid="uid://c2xqdlfsjuuab" path="res://Scenes/UI/pressEnterPrompt.tscn" id="5_vgtbf"]
+[ext_resource type="PackedScene" uid="uid://c2xqdlfsjuuab" path="res://Scenes/UI/TextPrompt.tscn" id="5_vgtbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r22p4"]
 size = Vector2(76, 76)
